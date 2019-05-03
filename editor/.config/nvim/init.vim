@@ -1,6 +1,6 @@
-" Fish doesn't play all that well with others
+" Teach a man to fish, and fuck up his terminal experience
 set shell=/bin/bash
-let mapleader = "\<Space>"
+let mapleader =","
 
 " =============================================================================
 " # PLUGINS
@@ -8,46 +8,57 @@ let mapleader = "\<Space>"
 " Load vundle
 set nocompatible
 filetype off
-set rtp+=~/dev/others/base16/builder/templates/vim/
-call plug#begin()
+set clipboard=unnamedplus
+set rtp+=~/.config/configs/editor/.config/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Load plugins
 " VIM enhancements
-Plug 'ciaranm/securemodelines'
-Plug 'vim-scripts/localvimrc'
-Plug 'justinmk/vim-sneak'
+Plugin 'VundleVim/Vundle.vim'       " Plugin manager
+
+Plugin 'scrooloose/nerdtree'	    " Hackerman
+Plugin 'tpope/vim-sensible'		    " Sensible defaults
+Plugin 'scrooloose/syntastic'	    " Syntax highlighting for most things
+Plugin 'vimwiki/vimwiki'		    " Keep my life in check
+Plugin 'Shougo/deoplete.nvim'	    " Async completion engine
+Plugin 'tpope/vim-surround'		    " Not vim without this
+Plugin 'https://github.com/Ron89/thesaurus_query.vim' 
+Plugin 'mhinz/vim-startify'			" Cow fortunes
 
 " GUI enhancements
-Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
-Plug 'machakann/vim-highlightedyank'
-Plug 'andymass/vim-matchup'
+Plugin 'itchyny/lightline.vim'
+Plugin 'w0rp/ale'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'andymass/vim-matchup'
 
 " Fuzzy finder
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plugin 'airblade/vim-rooter'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 " Semantic language support
-"Plug 'phildawes/racer'
-"Plug 'racer-rust/vim-racer'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+Plugin 'phildawes/racer'
+Plugin 'racer-rust/vim-racer'
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+" Plugin 'autozimu/LanguageClient-neovim' " Language server
 
-" Completion plugins
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+" Completion Plugin
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-tmux'
+Plugin 'ncm2/ncm2-path'
 
 " Syntactic language support
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
-"Plug 'fatih/vim-go'
-Plug 'dag/vim-fish'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plugin 'cespare/vim-toml'
+Plugin 'rust-lang/rust.vim'
+Plugin 'dag/vim-fish'
+Plugin 'godlygeek/tabular'
 
-call plug#end()
+" Aesthetics
+Plugin 'lifepillar/vim-solarized8'  " FOTM
+Plugin 'junegunn/goyo.vim'			" Distraction free
+
+call vundle#end()
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -65,10 +76,16 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
 endif
 " Colors
 set background=dark
-colorscheme base16-gruvbox-dark-hard
+colorscheme solarized8 " space-vim-dark
 hi Normal ctermbg=NONE
+
 " Get syntax
 syntax on
+
+
+" =============================================================================
+"  Plugin specific stuff 
+" =============================================================================
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
@@ -84,10 +101,21 @@ let g:secure_modelines_allowed_items = [
                 \ "colorcolumn"
                 \ ]
 
-" Base16
-let base16colorspace=256
-let g:base16_shell_path="~/dev/others/base16/builder/templates/shell/scripts/"
+" Distraction free
+let g:goyo_height=100
 
+" function SetLSPShortcuts()
+"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+" endfunction()
 " Lightline
 " let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = {
@@ -148,15 +176,8 @@ let g:latex_indent_enabled = 1
 let g:latex_fold_envs = 0
 let g:latex_fold_sections = []
 
-" Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
-
 " Quick-save
 nmap <leader>w :w<CR>
-
-" Don't confirm .lvimrc
-let g:localvimrc_ask = 0
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
@@ -168,6 +189,12 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 "let g:racer_cmd = "/usr/bin/racer"
 "let g:racer_experimental_completer = 1
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
+
+" Clang completion for c(++)
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['clangd'],
+  \ 'c': ['clangd'],
+  \ }
 
 " Completion
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -187,7 +214,7 @@ let g:go_bin_path = expand("~/dev/go/bin")
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
-set autoindent
+set autochdir
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
 set scrolloff=2
@@ -195,26 +222,19 @@ set noshowmode
 set hidden
 set nowrap
 set nojoinspaces
-let g:sneak#s_next = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_frontmatter = 1
-set printfont=:h10
-set printencoding=utf-8
-set printoptions=paper:letter
-" Always draw sign column. Prevent buffer moving when adding/deleting sign.
-set signcolumn=yes
 
-" Settings needed for .lvimrc
-set exrc
-set secure
+" Always draw sign column for linter. Prevent buffer moving when adding/deleting sign.
+set signcolumn=yes
 
 " Sane splits
 set splitright
 set splitbelow
 
 " Permanent undo
-set undodir=~/.vimdid
+set undodir=~/.config/configs/editor/.vimdid
 set undofile
 
 " Decent wildmenu
@@ -223,16 +243,12 @@ set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 " Use wide tabs
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set noexpandtab
 
 " Wrapping options
-set formatoptions=tc " wrap text and comments using textwidth
-set formatoptions+=r " continue comments when pressing ENTER in I mode
-set formatoptions+=q " enable formatting of comments with gq
-set formatoptions+=n " detect lists for formatting
 set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 
 " Proper search
@@ -248,7 +264,7 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-" Very magic by default
+" 'Very magic' vim pattern matching by default
 nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
@@ -294,20 +310,25 @@ vnoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
-" Suspend with Ctrl+f
-inoremap <C-f> :sus<cr>
-vnoremap <C-f> :sus<cr>
-nnoremap <C-f> :sus<cr>
+" Move between splits
+nnoremap <leader>l <C-l>
+nnoremap <leader>j <C-j>
+nnoremap <leader>k <C-k>
+nnoremap <leader>h <C-h>
+
+" Find and replace
+nnoremap S :%s//g<Left><left>
 
 " Jump to start and end of line using the home row keys
-map H ^
-map L $
+map h ^
+map l $
 
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
+set clipboard=unnamedplus
 
 " <leader>s for Rg search
 noremap <leader>s :Rg
@@ -351,12 +372,9 @@ nnoremap k gk
 " Jump to next/previous error
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> L <Plug>(ale_lint)
+nmap <silent> l <Plug>(ale_lint)
 nmap <silent> <C-l> <Plug>(ale_detail)
 nmap <silent> <C-g> :close<cr>
-
-" <leader><leader> toggles between buffers
-nnoremap <leader><leader> <c-^>
 
 " <leader>= reformats current tange
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
@@ -371,21 +389,39 @@ nnoremap <leader>q g<c-g>
 noremap <leader>m ct_
 noremap <leader>n ct-
 
-" M to make
-noremap M :!make -k -j4<cr>
-
 " I can type :help on my own, thanks.
 map <F1> <Esc>
 imap <F1> <Esc>
 
+" I can't spell, though
+map <leader>o :setlocal spell! spelllang=en_us<CR>
 
+" I'm a hackerman
+map <C-n> :NERDTreeToggle<CR>
+
+" 'Zooming' with new tabs
+nmap <Leader>zi :tabnew %<CR>
+nmap <Leader>zo :tabclose<CR>
+
+" GOOOYOOOO
+map <leader>g :Goyo <CR> 
+
+" Navigating with guides
+inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+map      <leader><leader> <Esc>/<++><Enter>"_c4l				
 " =============================================================================
 " # Autocommands
 " =============================================================================
 
+" Clear up tex junk
+autocmd VimLeave *.tex !~/scripts/texclear.sh %
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Prevent accidental writes to buffers that shouldn't be edited
-autocmd BufRead *.orig set readonly
-autocmd BufRead *.pacnew set readonly
+" autocmd BufRead *.orig set readonly
+" autocmd BufRead *.pacnew set readonly
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
@@ -395,6 +431,7 @@ if has("autocmd")
   " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+"
 
 " Auto-make less files on save
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
@@ -411,9 +448,67 @@ autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
+" Ensure files are read as what I want:
+	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+	let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki', 'path_html': '~/Dropbox/notepage', 'custom_wiki2html': '~/scripts/wiki2html.sh', 'syntax': 'markdown', 'ext': '.md'}]
+	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd FileType html inoremap ;i <em></em><Space><++><Esc>FeT>i
+
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 
+" =============================================================================
+"  C stuff
+" =============================================================================
+"
+" C brace folding, disable multi-line comment folding
+let c_no_comment_fold = 1
+set foldmethod=syntax
+set foldtext=MyFoldText()
+
+function MyFoldText()
+  let line = getline(v:foldstart)
+  let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+  return v:folddashes . sub
+endfunction
+
+set fillchars=fold:\ 
+
+" C snippets 
+
+" Single line and function header respectively
+inoremap <leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
+map 	 <leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
+inoremap <leader>c <Esc>i/**<CR>* <++><CR>* Pre-condition: <++><CR>* Post-condition: <++><CR>*<CR>*/<ESC>?<++><CR>nn"_c4l
+
+" Comment style
+autocmd FileType *.c inoremap   <leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
+autocmd FileType *.c map 	 	<leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
+autocmd FileType c map 			<leader>b <Esc>:wall<CR>:Make<CR>
+
+" augroup LSP
+"   autocmd!
+"   autocmd FileType cpp,c call SetLSPShortcuts()
+" augroup END
+" Function parantheses 
+inoremap <leader>f <CR>{<CR><++><CR>}<Esc>/<++><CR>c4l
+
+" Make me daddy
+fun! SetMkfile()
+  let filemk = "Makefile"
+  let pathmk = "./"
+  let depth = 1
+  while depth < 4
+    if filereadable(pathmk . filemk)
+      return pathmk
+    endif
+    let depth += 1
+    let pathmk = "../" . pathmk
+  endwhile
+  return "."
+endf
+
+command! -nargs=* Make | let $mkpath = SetMkfile() | make <args> -C $mkpath | cwindow 10 
 " =============================================================================
 " # Footer
 " =============================================================================
@@ -422,3 +517,4 @@ autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
+

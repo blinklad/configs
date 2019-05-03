@@ -1,28 +1,19 @@
-abbr -a yr 'cal -y'
+# Abbreviations
 abbr -a c cargo
 abbr -a e nvim
 abbr -a m make
-abbr -a o xdg-open
 abbr -a g git
 abbr -a gc 'git checkout'
 abbr -a ga 'git add -p'
-abbr -a vimdiff 'nvim -d'
-abbr -a ct 'cargo t'
-abbr -a amz 'env AWS_SECRET_ACCESS_KEY=(pass www/aws-secret-key | head -n1)'
-abbr -a ais "aws ec2 describe-instances | jq '.Reservations[] | .Instances[] | {iid: .InstanceId, type: .InstanceType, key:.KeyName, state:.State.Name, host:.PublicDnsName}'"
-abbr -a print 'lp -h cups.csail.mit.edu -d xerox9 -oDuplex=DuplexNoTumble -oStapleLocation=SinglePortrait'
-abbr -a gah 'git stash; and git pull --rebase; and git stash pop'
-complete --command aurman --wraps pacman
+abbr -a cf ~/.config/configs/
+
+complete --command yay --wraps pacman
 
 set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
 
-if status --is-interactive
-	tmux ^ /dev/null; and exec true
-end
-
-if command -v aurman > /dev/null
-	abbr -a p 'aurman'
-	abbr -a up 'aurman -Syu'
+if command -v yay > /dev/null
+	abbr -a p 'yay'
+	abbr -a up 'yay -Syu'
 else
 	abbr -a p 'sudo pacman'
 	abbr -a up 'sudo pacman -Syu'
@@ -141,35 +132,14 @@ setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 # For RLS
 # https://github.com/fish-shell/fish-shell/issues/2456
-setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
-setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
+# setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
+# setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
 
 setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
 setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS '--height 20%'
 
-abbr -a nova 'env OS_PASSWORD=(pass www/mit-openstack | head -n1) nova'
-abbr -a glance 'env OS_PASSWORD=(pass www/mit-openstack | head -n1) glance'
-setenv OS_USERNAME jfrg@csail.mit.edu
-setenv OS_TENANT_NAME usersandbox_jfrg
-setenv OS_AUTH_URL https://nimbus.csail.mit.edu:5001/v2.0
-setenv OS_IMAGE_API_VERSION 1
-setenv OS_VOLUME_API_VERSION 2
-function penv -d "Set up environment for the PDOS openstack service"
-	env OS_PASSWORD=(pass www/mit-openstack | head -n1) OS_TENANT_NAME=pdos OS_PROJECT_NAME=pdos $argv
-end
-function pvm -d "Run nova/glance commands against the PDOS openstack service"
-	switch $argv[1]
-	case 'image-*'
-		penv glance $argv
-	case 'c'
-		penv cinder $argv[2..-1]
-	case 'g'
-		penv glance $argv[2..-1]
-	case '*'
-		penv nova $argv
-	end
-end
+setenv OS_USERNAME harveyem@utas.edu.au 
 
 # Fish should not add things to clipboard when killing
 # See https://github.com/fish-shell/fish-shell/issues/772
@@ -246,14 +216,15 @@ function fish_greeting
 		)
 	echo
 
+	# Second part of greeeter 
 	set r (random 0 100)
 	if [ $r -lt 5 ] # only occasionally show backlog (5%)
 		echo -e " \e[1mBacklog\e[0;32m"
 		set_color blue
 		echo "  [project] <description>"
-		echo
 	end
-
+	
+	# Third & last part of greeter 
 	set_color normal
 	echo -e " \e[1mTODOs\e[0;32m"
 	echo

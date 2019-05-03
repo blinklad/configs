@@ -1,5 +1,6 @@
 import xerox
 
+# Copy paste functionality is nice
 class NvimClipboard(object):
     def __init__(self, vim):
         self.provides = ['clipboard']
