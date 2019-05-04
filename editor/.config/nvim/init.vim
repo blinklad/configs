@@ -31,6 +31,7 @@ Plugin 'w0rp/ale'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'andymass/vim-matchup'
 Plugin 'chriskempson/base16-vim' " Color scheme templates
+
 " Fuzzy finder
 Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

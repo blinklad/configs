@@ -147,6 +147,7 @@ set FISH_CLIPBOARD_CMD "cat"
 
 function fish_user_key_bindings
 	bind \cz 'fg>/dev/null ^/dev/null'
+	bind \cl 'fish_clear; fish_prompt'
 	if functions -q fzf_key_bindings
 		fzf_key_bindings
 	end
@@ -171,20 +172,11 @@ function fish_prompt
 end
 
 function fish_greeting
+	set_color normal
 	echo
 	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
 	echo -e (uptime -p | sed 's/^up //' | awk '{print " \\\\e[1mUptime: \\\\e[0;32m"$0"\\\\e[0m"}')
 	echo -e (uname -n | awk '{print " \\\\e[1mHostname: \\\\e[0;32m"$0"\\\\e[0m"}')
-	echo -e " \\e[1mDisk usage:\\e[0m"
-	echo
-	echo -ne (\
-		df -l -h | grep -E 'dev/(xvda|sd|mapper)' | \
-		awk '{printf "\\\\t%s\\\\t%4s / %4s  %s\\\\n\n", $6, $3, $2, $5}' | \
-		sed -e 's/^\(.*\([8][5-9]\|[9][0-9]\)%.*\)$/\\\\e[0;31m\1\\\\e[0m/' -e 's/^\(.*\([7][5-9]\|[8][0-4]\)%.*\)$/\\\\e[0;33m\1\\\\e[0m/' | \
-		paste -sd ''\
-	)
-	echo
-
 	echo -e " \\e[1mNetwork:\\e[0m"
 	echo
 	# http://tdt.rocks/linux_network_interface_naming.html
@@ -251,8 +243,8 @@ function fish_greeting
 	echo
 
 	if test -s ~/todo
-		set_color magenta
-		cat todo | sed 's/^/ /'
+		set_color blue
+		cat ~/todo | sed 's/^/ /'
 		echo
 	end
 
