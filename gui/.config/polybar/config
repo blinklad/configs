@@ -57,7 +57,7 @@ font-3 = "Noto Sans Symbols2:size=10;1"
 
 modules-left = date ewmh xwindow 
 modules-center = 
-modules-right = wlan cpu battery 
+modules-right = cpu battery 
 
 tray-position = right
 tray-padding = 2
@@ -161,7 +161,7 @@ type = internal/cpu
 interval = 2
 format-prefix = "💻 "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+; format-underline = #f90000
 label = %percentage:2%%
 
 ; Only show workspaces on the same output as the bar
@@ -246,7 +246,7 @@ interval = 5.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = 
 
 label-disconnected =
 
@@ -349,13 +349,13 @@ adapter = AC
 full-at = 98
 
 format-charging = <label-charging>
-format-charging-underline = #ffb52a
+; format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+; format-discharging-underline = ${self.format-charging-underline}
 
 format-full = <label-full>
-format-full-underline = ${self.format-charging-underline}
+; format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = ⚋
 ramp-capacity-1 = ⚊

@@ -15,7 +15,6 @@ call vundle#begin()
 " Load plugins
 " VIM enhancements
 Plugin 'VundleVim/Vundle.vim'       " Plugin manager
-
 Plugin 'scrooloose/nerdtree'	    " Hackerman
 Plugin 'tpope/vim-sensible'		    " Sensible defaults
 Plugin 'scrooloose/syntastic'	    " Syntax highlighting for most things
@@ -24,13 +23,14 @@ Plugin 'Shougo/deoplete.nvim'	    " Async completion engine
 Plugin 'tpope/vim-surround'		    " Not vim without this
 Plugin 'https://github.com/Ron89/thesaurus_query.vim' 
 Plugin 'mhinz/vim-startify'			" Cow fortunes
+Plugin 'romainl/vim-cool'			" Make hlsearch bearable
 
 " GUI enhancements
 Plugin 'itchyny/lightline.vim'
 Plugin 'w0rp/ale'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'andymass/vim-matchup'
-
+Plugin 'chriskempson/base16-vim' " Color scheme templates
 " Fuzzy finder
 Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -41,8 +41,12 @@ Plugin 'phildawes/racer'
 Plugin 'racer-rust/vim-racer'
 Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
-" Plugin 'autozimu/LanguageClient-neovim' " Language server
+Plugin 'sheerun/vim-polyglot'			" Sensible defaults for language packs
+Plugin 'vim-jp/vim-cpp'					" Extended C(pp) recognition 
+Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
+Plugin 'vim-scripts/TagHighlight'		" Recognise ctags
 
+" Plugin 'autozimu/LanguageClient-neovim' " Language server
 " Completion Plugin
 Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-tmux'
@@ -70,13 +74,16 @@ end
 if !has('gui_running')
   set t_Co=256
 endif
+
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
+
 " Colors
 set background=dark
-colorscheme solarized8 " space-vim-dark
+set termguicolors 
+colorscheme base16-atelier-dune " solarized8 
 hi Normal ctermbg=NONE
 
 " Get syntax
@@ -104,18 +111,6 @@ let g:secure_modelines_allowed_items = [
 " Distraction free
 let g:goyo_height=100
 
-" function SetLSPShortcuts()
-"   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-"   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-"   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-"   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-"   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-"   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-"   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-"   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-"   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-"   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-" endfunction()
 " Lightline
 " let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = {
@@ -169,7 +164,7 @@ let g:ale_sign_hint = "➤"
 
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F2> :UpdateTypesFile<CR>
 
 " Latex
 let g:latex_indent_enabled = 1
@@ -220,7 +215,7 @@ set encoding=utf-8
 set scrolloff=2
 set noshowmode
 set hidden
-set nowrap
+set wrap " because I'm a gangsta
 set nojoinspaces
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
@@ -248,8 +243,6 @@ set softtabstop=4
 set tabstop=4
 set noexpandtab
 
-" Wrapping options
-set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 
 " Proper search
 set incsearch
@@ -364,13 +357,6 @@ nnoremap <right> :bn<CR>
 " Move by line
 nnoremap j gj
 nnoremap k gk
-
-" Jump to next/previous error
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> l <Plug>(ale_lint)
-nmap <silent> <C-l> <Plug>(ale_detail)
-nmap <silent> <C-g> :close<cr>
 
 " <leader>= reformats current tange
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
