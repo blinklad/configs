@@ -9,7 +9,17 @@ font pango:Droid Sans Mono 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# =============================================================================
+# Colors from X. Syntax: set_from_resource $<name> <resource_name> <fallback>
+# =============================================================================
+set_from_resource $bg background   #000000
+set_from_resource $fg foreground   #ffffff
+set_from_resource $ac color1       #ab4642
+set_from_resource $fw color3	   #585858
+set_from_resource $iw color4	   #b8b8b8
+set_from_resource $sp color2	   #383834
+
+# # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 ## Open Vim
@@ -106,7 +116,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+n reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -148,31 +158,14 @@ bindsym $mod+r mode "resize"
 
 ## Set the window style	border	background  text
 
-client.focused			$ac	$ac	    $tx
-client.unfocused		$bg	$bg	    $ia
-client.focused_inactive		$bg     $bg         $ac
-client.urgent			$rd	$rd	    $tx
-
+client.focused			$ac	$ac	$bg
+client.unfocused		$bg	$bg	$ac
+client.focused_inactive $bg $bg $ac
+client.urgent			$iw	$bg	$fw
 
 # Disable titlebar
 
-for_window [class="^.*"] border pixel 0:
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-	
-#	colors {
-#		background		$bg
-#		statusline		$fg
-#		separator		$hi
-#		focused_workspace	$gn	$bg	$ac
-#		active_workspace	$gn	$ac	$tx
-#		inactive_workspace	$bg	$bg	$ia
-#		urgent_workspace	$rd	$bg	$ac
-#	}
-#}
+for_window [class="^.*"] border pixel 2
 
 # Run polybar script
 exec_always --no-startup-id ~/scripts/launch.sh
@@ -184,10 +177,10 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id nm-applet
 
 # If there is a single workspace, no gaps
-# smart_gaps on
+smart_gaps on
 		
 # If there is a single workspace, no border BS
-# smart_borders on
+smart_borders on
 
 # Start wifi
 

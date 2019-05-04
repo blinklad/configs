@@ -319,10 +319,6 @@ nnoremap <leader>h <C-h>
 " Find and replace
 nnoremap S :%s//g<Left><left>
 
-" Jump to start and end of line using the home row keys
-map h ^
-map l $
-
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
