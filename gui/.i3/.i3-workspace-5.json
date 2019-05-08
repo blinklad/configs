@@ -1,0 +1,22 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1051,
+       "width": 638,
+       "x": 1281,
+       "y": 1
+    },
+    "name": "User 1 - Anki",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^Anki$",
+       "instance": "^anki$",
+       "title": "^User\\ 1\\ \\-\\ Anki$"
+       }
+    ],
+    "type": "con"
+}

@@ -7,8 +7,8 @@ set_from_resource $ac color1       #ab4642
 set_from_resource $fw color3	   #585858
 set_from_resource $iw color4	   #b8b8b8
 set_from_resource $sp color2	   #383834
-set_from_resource $sp _color2	   #383834
-set	$cs	#a7a28c
+set_from_resource $sp color2	   #383834
+set				  $cs			   #a7a28c
 
 # Set the window style	
 # Set the window style |border|bckgrnd|text|indicator|child borer

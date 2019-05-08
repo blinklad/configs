@@ -34,7 +34,7 @@ Plugin 'chriskempson/base16-vim' " Color scheme templates
 
 " Fuzzy finder
 Plugin 'airblade/vim-rooter'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 " Semantic language support
@@ -457,6 +457,11 @@ endfunction
 
 set fillchars=fold:\ 
 
+" C tags
+
+nnoremap <leader>d <C-]>
+nnoremap <leader>b <C-T>
+
 " C snippets 
 
 " Single line and function header respectively
@@ -467,7 +472,7 @@ inoremap <leader>c <Esc>i/**<CR>* <++><CR>* Pre-condition: <++><CR>* Post-condit
 " Comment style
 autocmd FileType *.c inoremap   <leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
 autocmd FileType *.c map 	 	<leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
-autocmd FileType c map 			<leader>b <Esc>:wall<CR>:Make<CR>
+autocmd FileType c map 			<leader>B <Esc>:wall<CR>:Make<CR>
 
 " augroup LSP
 "   autocmd!
