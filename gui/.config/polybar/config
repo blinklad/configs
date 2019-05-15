@@ -34,8 +34,8 @@ radius = 6.0
 fixed-center = false
 bottom = true
 
-;background = ${colors.background}
-;foreground = ${colors.foreground}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 border-size = 0
 line-size = 2

@@ -6,6 +6,7 @@ abbr -a g git
 abbr -a gc 'git checkout'
 abbr -a ga 'git add -p'
 abbr -a cf ~/.config/configs/
+abbr -a u ~/Uni/
 
 complete --command yay --wraps pacman
 

@@ -56,6 +56,9 @@ export FZF_DEFAULT_OPTS='
 ## Paths
 export GOPATH=/home/blinklad/programming/go
 
+## Get tmux to co-operate
+## export TERM=xterm-256color
+
 ## Random
 shopt -s autocd
 

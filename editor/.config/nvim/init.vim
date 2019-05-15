@@ -65,6 +65,10 @@ Plugin 'junegunn/goyo.vim'			" Distraction free
 
 call vundle#end()
 
+
+" =============================================================================
+"  Colors 
+" =============================================================================
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
     set inccommand=nosplit
@@ -81,7 +85,6 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   set termguicolors
 endif
 
-" Colors
 set background=dark
 set termguicolors 
 colorscheme base16-atelier-dune " solarized8 
@@ -89,7 +92,6 @@ hi Normal ctermbg=NONE
 
 " Get syntax
 syntax on
-
 
 " =============================================================================
 "  Plugin specific stuff 
@@ -420,7 +422,6 @@ endif
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
 " Follow Rust code style rules
-au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
 au Filetype rust set colorcolumn=100
 
 " Help filetype detection
