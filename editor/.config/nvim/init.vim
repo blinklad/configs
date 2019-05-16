@@ -473,7 +473,7 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 	autocmd FileType html inoremap ;i <em></em><Space><++><Esc>FeT>i
 
 " Script plugins
-autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
+" autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 
 " =============================================================================
 "  C stuff

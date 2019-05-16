@@ -192,7 +192,7 @@ smart_borders on
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id ~/scripts/launch.sh
+exec_always --no-startup-id ~/.scripts/launch.sh
 
 # compton
 exec_always --no-startup-id compton
@@ -201,7 +201,7 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id nm-applet
 
 # wifi 
-exec ~/scripts/startupscript.sh
+exec ~/.scripts/startupscript.sh
 
 # Set the colour scheme with Pywal
 #exec wal -R
