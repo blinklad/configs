@@ -12,8 +12,8 @@
 
 EDITOR=nvim
 BROWSER=firefox-developer-edition
-NAME DEFAULT="Jon Gjengset"
-EMAIL=jon@tsp.io
+NAME DEFAULT="Evan Harvey"
+EMAIL=harveyem@utas.edu.au
 
 PATH DEFAULT=${PATH}:/home/@{PAM_USER}/bin
 PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.cargo/bin
@@ -21,7 +21,7 @@ PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.npm-global/bin
 PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.gem/ruby/2.6.0/bin
 
 # Globals
-TZ=America/New_York
+TZ=Australia/Tasmania
 
 # Configs
 R_LIBS_USER DEFAULT=/home/@{PAM_USER}/.Rpackages
