@@ -46,8 +46,9 @@ Plugin 'sheerun/vim-polyglot'			" Sensible defaults for language packs
 Plugin 'vim-jp/vim-cpp'					" Extended C(pp) recognition 
 Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
 Plugin 'vim-scripts/TagHighlight'		" Recognise ctags
+Plugin 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+" Language server
 
-" Plugin 'autozimu/LanguageClient-neovim' " Language server
 " Completion Plugin
 Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-tmux'
@@ -88,6 +89,8 @@ endif
 set background=dark
 set termguicolors 
 colorscheme base16-atelier-dune " solarized8 
+" let base16colorspace=256
+
 hi Normal ctermbg=NONE
 
 " Get syntax
@@ -153,6 +156,11 @@ let g:ale_rust_rls_config = {
 	\ }
 let g:ale_rust_rls_toolchain = ''
 let g:ale_linters = {'rust': ['rls']}
+let g:ale_sign_error = "✖"
+let g:ale_sign_warning = "⚠"
+let g:ale_sign_info = "i"
+let g:ale_sign_hint = "➤"
+
 highlight link ALEWarningSign Todo
 highlight link ALEErrorSign WarningMsg
 highlight link ALEVirtualTextWarning Todo
@@ -160,14 +168,26 @@ highlight link ALEVirtualTextInfo Todo
 highlight link ALEVirtualTextError WarningMsg
 highlight ALEError guibg=None
 highlight ALEWarning guibg=None
-let g:ale_sign_error = "✖"
-let g:ale_sign_warning = "⚠"
-let g:ale_sign_info = "i"
-let g:ale_sign_hint = "➤"
 
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
 nnoremap <silent> <F2> :UpdateTypesFile<CR>
+
+" Jump to next/previous error
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-l> <Plug>(ale_detail)
+nmap <silent> <C-g> :close<cr>
+
+" Language client stuff
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['clangd'],
+  \ 'c': ['clangd'],
+  \ 'rust': ['rustup', 'run', 'nightly', 'rls']
+  \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
 
 " Latex
 let g:latex_indent_enabled = 1
@@ -177,6 +197,13 @@ let g:latex_fold_sections = []
 " Quick-save
 nmap <leader>w :w<CR>
 
+
+" =============================================================================
+"  Rust
+" =============================================================================
+" Rust is rust my dude
+autocmd BufReadPost *.rs setlocal filetype=rust
+
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
 let g:rustfmt_command = "rustfmt +nightly"
@@ -184,15 +211,18 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
-"let g:racer_cmd = "/usr/bin/racer"
-"let g:racer_experimental_completer = 1
+
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
-" Clang completion for c(++)
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ 'c': ['clangd'],
-  \ }
+
+
+" =============================================================================
+"  C
+" =============================================================================
+
 
 " Completion
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -217,8 +247,8 @@ set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-o
 set encoding=utf-8
 set scrolloff=2
 set noshowmode
-set hidden
-set wrap " because I'm a gangsta
+set hidden " Required for operations modifying multiple buffers (eg. rename)
+set wrap   " because I'm a gangsta
 set nojoinspaces
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
@@ -323,7 +353,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 set clipboard=unnamedplus
 
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>s :Rg<CR>
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -391,10 +421,14 @@ nmap <Leader>zo :tabclose<CR>
 " GOOOYOOOO
 map <leader>g :Goyo <CR> 
 
-" Navigating with guides
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-map      <leader><leader> <Esc>/<++><Enter>"_c4l				
+" Navigating between buffers 
+nnoremap <leader><leader> <c-^>
+
+" TODO Fix the guide navigiation
+" inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+" vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+" map      <leader><leader> <Esc>/<++><Enter>"_c4l				
+
 " =============================================================================
 " # Autocommands
 " =============================================================================
@@ -405,8 +439,8 @@ autocmd VimLeave *.tex !~/scripts/texclear.sh %
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Prevent accidental writes to buffers that shouldn't be edited
-" autocmd BufRead *.orig set readonly
-" autocmd BufRead *.pacnew set readonly
+autocmd BufRead *.orig set readonly
+autocmd BufRead *.pacnew set readonly
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
@@ -482,7 +516,7 @@ autocmd FileType c map 			<leader>B <Esc>:wall<CR>:Make<CR>
 " Function parantheses 
 inoremap <leader>f <CR>{<CR><++><CR>}<Esc>/<++><CR>c4l
 
-" Make me daddy
+" Makes for c projects 
 fun! SetMkfile()
   let filemk = "Makefile"
   let pathmk = "./"
