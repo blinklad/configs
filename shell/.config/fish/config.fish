@@ -1,5 +1,6 @@
 # Abbreviations
 abbr -a c cargo
+abbr -a cr 'cargo run'
 abbr -a e nvim
 abbr -a m make
 abbr -a g git
@@ -170,8 +171,8 @@ function fish_prompt
 	end
 	set_color green
 	printf '%s ' (__fish_git_prompt)
-	set_color red
-	echo -n '| '
+	set_color blue
+	echo -n '$ '
 	set_color normal
 end
 
