@@ -56,6 +56,9 @@ export FZF_DEFAULT_OPTS='
 ## Paths
 export GOPATH=/home/blinklad/programming/go
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 ## Get tmux to co-operate
 ## export TERM=xterm-256color
 

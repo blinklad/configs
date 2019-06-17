@@ -203,6 +203,9 @@ exec_always --no-startup-id nm-applet
 # wifi 
 exec ~/.scripts/startupscript.sh
 
+# background
+exec feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg
+
 # Set the colour scheme with Pywal
 #exec wal -R
 

@@ -8,8 +8,6 @@ abbr -a gc 'git checkout'
 abbr -a ga 'git add -p'
 abbr -a cf ~/.config/configs/
 abbr -a u ~/Uni/
-abbr -a cat bat
-abbr -a grep rg
 
 complete --command yay --wraps pacman
 
@@ -34,6 +32,14 @@ else
 	abbr -a l 'ls'
 	abbr -a ll 'ls -l'
 	abbr -a lll 'ls -la'
+end
+
+if command -v rg > /dev/null
+	abbr -a grep 'rg'
+end
+
+if command -v bat > /dev/null
+	abbr -a cat 'bat'
 end
 
 if [ -e /usr/share/fish/functions/fzf_key_bindings.fish ]; and status --is-interactive
