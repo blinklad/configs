@@ -423,6 +423,7 @@ map <leader>g :Goyo <CR>
 
 " Navigating between buffers 
 nnoremap <leader><leader> <c-^>
+inoremap <leader><leader> <c-^>
 
 " TODO Fix the guide navigiation
 " inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
