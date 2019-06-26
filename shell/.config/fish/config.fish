@@ -8,6 +8,7 @@ abbr -a gc 'git checkout'
 abbr -a ga 'git add -p'
 abbr -a cf ~/.config/configs/
 abbr -a u ~/Uni/
+abbr -a pac 'sudo pacman -Syu'
 
 complete --command yay --wraps pacman
 
@@ -125,6 +126,10 @@ function d
 	end
 end
 
+# 'Environment' variables
+set -x EDITOR nvim
+set -x VISUAL nvim
+
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
@@ -169,7 +174,7 @@ function fish_prompt
 	set_color brblack
 	echo -n "["(date "+%H:%M")"] "
 	set_color blue
-	echo -n (hostname)
+	# echo -n (hostname)
 	if [ $PWD != $HOME ]
 		set_color brblack
 		echo -n ':'
@@ -179,7 +184,7 @@ function fish_prompt
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color blue
-	echo -n '$ '
+	echo -n 'λ '
 	set_color normal
 end
 
@@ -252,12 +257,9 @@ function fish_greeting
 	set_color red
 	# echo "  [project] <description>"
 
-	echo
-
 	if test -s ~/todo
 		set_color blue
 		cat ~/todo | sed 's/^/ /'
-		echo
 	end
 
 	set_color normal
