@@ -1,6 +1,7 @@
 # Abbreviations
 abbr -a c cargo
 abbr -a cr 'cargo run'
+abbr -a ct 'cargo test'
 abbr -a e nvim
 abbr -a m make
 abbr -a g git

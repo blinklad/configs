@@ -17,7 +17,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'       " Plugin manager
 Plugin 'scrooloose/nerdtree'	    " Hackerman
 Plugin 'tpope/vim-sensible'		    " Sensible defaults
-Plugin 'scrooloose/syntastic'	    " Syntax highlighting for most things
+" Plugin 'scrooloose/syntastic'	    " Syntax highlighting for most things
 Plugin 'vimwiki/vimwiki'		    " Keep my life in check
 Plugin 'Shougo/deoplete.nvim'	    " Async completion engine
 Plugin 'tpope/vim-surround'		    " Not vim without this
@@ -44,7 +44,7 @@ Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
 Plugin 'sheerun/vim-polyglot'			" Sensible defaults for language packs
 Plugin 'vim-jp/vim-cpp'					" Extended C(pp) recognition 
-Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
+" Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
 Plugin 'vim-scripts/TagHighlight'		" Recognise ctags
 Plugin 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
 " Language server
