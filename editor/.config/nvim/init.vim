@@ -203,6 +203,7 @@ nmap <leader>w :w<CR>
 " =============================================================================
 " Rust is rust my dude
 autocmd BufReadPost *.rs setlocal filetype=rust
+autocmd FileType rust inoremap <leader>f {<CR><++><CR>}<Esc>/<++><CR>c4l
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
@@ -216,7 +217,6 @@ let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
-
 
 
 " =============================================================================
@@ -458,7 +458,7 @@ autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
 " Follow Rust code style rules
 au Filetype rust set colorcolumn=100
-
+.
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
 autocmd BufRead *.md set filetype=markdown
@@ -507,15 +507,14 @@ inoremap <leader>c <Esc>i/**<CR>* <++><CR>* Pre-condition: <++><CR>* Post-condit
 
 " Comment style
 autocmd FileType *.c inoremap   <leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
+autocmd FileType *.c inoremap <leader>f <CR>{<CR><++><CR>}<Esc>/<++><CR>c4l
 autocmd FileType *.c map 	 	<leader>C <Esc>i/*<++>*/<++><Esc>/<++><Enter>"_c4l
-autocmd FileType c map 			<leader>B <Esc>:wall<CR>:Make<CR>
+autocmd FileType *.c map 			<leader>B <Esc>:wall<CR>:Make<CR>
 
 " augroup LSP
 "   autocmd!
 "   autocmd FileType cpp,c call SetLSPShortcuts()
 " augroup END
-" Function parantheses 
-inoremap <leader>f <CR>{<CR><++><CR>}<Esc>/<++><CR>c4l
 
 " Makes for c projects 
 fun! SetMkfile()
