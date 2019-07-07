@@ -25,3 +25,5 @@ __pycache__
 *.err
 .vscode/settings.json
 tags
+target/*
+target

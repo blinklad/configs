@@ -173,18 +173,23 @@ end
 
 function fish_prompt
 	set_color brblack
-	echo -n "["(date "+%H:%M")"]"
+	echo -n "["(date "+%H:%M")"] "
 	set_color blue
-	# echo -n (hostname)
-	if [ $PWD != $HOME ]
-		set_color brblack
-		echo -n ':'
-		set_color yellow
+	echo -n (hostname)
+
+	set_color brblack
+	echo -n ':'
+	set_color yellow
+
+	if [ $PWD = $HOME ]
+		echo -n 'home'
+	else
 		echo -n (basename $PWD)
 	end
+
 	set_color green
 	printf '%s ' (__fish_git_prompt)
-	set_color blue
+	set_color red
 	echo -n 'λ '
 	set_color normal
 end
@@ -195,7 +200,7 @@ function fish_greeting
 	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
 	echo -e (uptime -p | sed 's/^up //' | awk '{print " \\\\e[1mUptime: \\\\e[0;32m"$0"\\\\e[0m"}')
 	echo -e (uname -n | awk '{print " \\\\e[1mHostname: \\\\e[0;32m"$0"\\\\e[0m"}')
-	echo -e " \\e[1mNetwork:\\e[0m"
+	echo -e " \\e[2mNetwork:\\e[0m"
 	echo
 	# http://tdt.rocks/linux_network_interface_naming.html
 	echo -ne (\
