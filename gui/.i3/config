@@ -61,7 +61,6 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -170,6 +169,52 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+
+# Workspace saving
+mode "save" {
+  bindsym 1 exec "i3-resurrect save -w web"
+  bindsym 2 exec "i3-resurrect save -w code"
+  bindsym 3 exec "i3-resurrect save -w term"
+  bindsym 4 exec "i3-resurrect save -w mx"
+  bindsym 5 exec "i3-resurrect save -w a"
+  bindsym 6 exec "i3-resurrect save -w b"
+  bindsym 7 exec "i3-resurrect save -w c"
+  bindsym 8 exec "i3-resurrect save -w d"
+  bindsym 9 exec "i3-resurrect save -w e"
+  bindsym 0 exec "i3-resurrect save -w f"
+
+
+
+  # Back to normal: Enter, Escape, or s
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym s mode "default"
+  bindsym $mod+s mode "default"
+}
+
+bindsym $mod+s mode "save"
+
+# Workspace restoring
+mode "restore" {
+  bindsym 1 exec "i3-resurrect restore -w web"
+  bindsym 2 exec "i3-resurrect restore -w code"
+  bindsym 3 exec "i3-resurrect restore -w term"
+  bindsym 4 exec "i3-resurrect restore -w mx"
+  bindsym 5 exec "i3-resurrect restore -w a"
+  bindsym 6 exec "i3-resurrect restore -w b"
+  bindsym 7 exec "i3-resurrect restore -w c"
+  bindsym 8 exec "i3-resurrect restore -w d"
+  bindsym 9 exec "i3-resurrect restore -w e"
+  bindsym 0 exec "i3-resurrect restore -w f"
+
+  # Back to normal: Enter, Escape, or n
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym n mode "default"
+  bindsym $mod+n mode "default"
+}
+
+bindsym $mod+n mode "restore"
 # =============================================================================
 # i3-gaps stuff 
 # =============================================================================
