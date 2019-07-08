@@ -115,7 +115,7 @@ bindsym $mod+r mode "resize"
 # =============================================================================
 
 # start a terminal
-bindsym $mod+Return exec termite -e tmux
+bindsym $mod+Return exec alacritty -e tmux
 
 # start firefox
 bindsym $mod+Shift+c exec firefox

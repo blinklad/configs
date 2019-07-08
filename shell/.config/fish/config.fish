@@ -186,7 +186,6 @@ function fish_prompt
 	else
 		echo -n (basename $PWD)
 	end
-
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color red
