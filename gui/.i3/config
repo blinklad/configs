@@ -254,6 +254,8 @@ exec feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg
 # Set the colour scheme with Pywal
 #exec wal -R
 
+# mpd
+exec fish -c mpd-listen
 # =============================================================================
 # Set the workspaces 
 # =============================================================================

@@ -45,4 +45,5 @@ dropbox &
 udiskie &
 nm-applet &
 feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg &
+fish -c mpd-listen &
 'libinput-gestures-setup start &'
