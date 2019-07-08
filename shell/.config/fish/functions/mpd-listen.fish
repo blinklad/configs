@@ -1,3 +1,8 @@
+# Dependencies:
+# * openbsd-netcat
+# * socat
+# * ncmpcpp
+# * mopidy-spotify (aur)
 function mpd-listen --description 'Listens for UDP MPD audio streams'
 	mkfifo /tmp/mpd.fifo # Make named pipe
 	nohup mopidy &		 # Fork mdp
