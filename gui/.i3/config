@@ -113,8 +113,11 @@ bindsym $mod+r mode "resize"
 # Program launchers 
 # =============================================================================
 
-# start a terminal
+# start a tmux session 
 bindsym $mod+Return exec alacritty -e tmux
+
+# start a terminal
+bindsym $mod+Shift+Return exec alacritty
 
 # start firefox
 bindsym $mod+Shift+c exec firefox
@@ -256,6 +259,7 @@ exec feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg
 
 # mpd
 exec fish -c mpd-listen
+
 # =============================================================================
 # Set the workspaces 
 # =============================================================================
