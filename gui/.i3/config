@@ -175,16 +175,16 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Workspace saving
 mode "save" {
-  bindsym 1 exec "i3-resurrect save -w web"
-  bindsym 2 exec "i3-resurrect save -w nvim"
-  bindsym 3 exec "i3-resurrect save -w util"
-  bindsym 4 exec "i3-resurrect save -w misc"
-  bindsym 5 exec "i3-resurrect save -w a"
-  bindsym 6 exec "i3-resurrect save -w b"
-  bindsym 7 exec "i3-resurrect save -w c"
-  bindsym 8 exec "i3-resurrect save -w d"
-  bindsym 9 exec "i3-resurrect save -w e"
-  bindsym 0 exec "i3-resurrect save -w f"
+  bindsym 1 exec "python /usr/bin/i3-resurrect save -w web"
+  bindsym 2 exec "python /usr/bin/i3-resurrect save -w nvim"
+  bindsym 3 exec "python /usr/bin/i3-resurrect save -w util"
+  bindsym 4 exec "python /usr/bin/i3-resurrect save -w misc"
+  bindsym 5 exec "python /usr/bin/i3-resurrect save -w a"
+  bindsym 6 exec "python /usr/bin/i3-resurrect save -w b"
+  bindsym 7 exec "python /usr/bin/i3-resurrect save -w c"
+  bindsym 8 exec "python /usr/bin/i3-resurrect save -w d"
+  bindsym 9 exec "python /usr/bin/i3-resurrect save -w e"
+  bindsym 0 exec "python /usr/bin/i3-resurrect save -w f"
 
 
 
@@ -199,16 +199,16 @@ bindsym $mod+s mode "save"
 
 # Workspace restoring
 mode "restore" {
-  bindsym 1 exec "i3-resurrect restore -w web"
-  bindsym 2 exec "i3-resurrect restore -w nvim"
-  bindsym 3 exec "i3-resurrect restore -w util"
-  bindsym 4 exec "i3-resurrect restore -w misc"
-  bindsym 5 exec "i3-resurrect restore -w a"
-  bindsym 6 exec "i3-resurrect restore -w b"
-  bindsym 7 exec "i3-resurrect restore -w c"
-  bindsym 8 exec "i3-resurrect restore -w d"
-  bindsym 9 exec "i3-resurrect restore -w e"
-  bindsym 0 exec "i3-resurrect restore -w f"
+  bindsym 1 exec "python /usr/bin/i3-resurrect restore -w web"
+  bindsym 2 exec "python /usr/bin/i3-resurrect restore -w nvim"
+  bindsym 3 exec "python /usr/bin/i3-resurrect restore -w util"
+  bindsym 4 exec "python /usr/bin/i3-resurrect restore -w misc"
+  bindsym 5 exec "python /usr/bin/i3-resurrect restore -w a"
+  bindsym 6 exec "python /usr/bin/i3-resurrect restore -w b"
+  bindsym 7 exec "python /usr/bin/i3-resurrect restore -w c"
+  bindsym 8 exec "python /usr/bin/i3-resurrect restore -w d"
+  bindsym 9 exec "python /usr/bin/i3-resurrect restore -w e"
+  bindsym 0 exec "python /usr/bin/i3-resurrect restore -w f"
 
   # Back to normal: Enter, Escape, or n
   bindsym Return mode "default"
@@ -268,13 +268,13 @@ exec fish -c mpd-listen
 
 # Path hacks
 # firefox 
-exec /usr/bin/i3-resurrect restore -w web
+exec python /usr/bin/i3-resurrect restore -w web
 
 # tmux #1 - nvim and friends
-exec /usr/bin/i3-resurrect restore -w nvim
+exec python /usr/bin/i3-resurrect restore -w nvim
 
 # tmux #2 - mutt and media player
-exec /usr/bin/i3-resurrect restore -w util
+exec python /usr/bin/i3-resurrect restore -w util
 
 # term splits ft. osrs, gotop and blank term
-exec /usr/bin/i3-resurrect restore -w misc
+exec python /usr/bin/i3-resurrect restore -w misc
