@@ -266,14 +266,15 @@ exec fish -c mpd-listen
 
 # exec_always --no-startup-id ~/scripts/restore_saved_layouts.sh
 
+# Path hacks
 # firefox 
-exec i3-resurrect restore -w web
+exec /usr/bin/i3-resurrect restore -w web
 
 # tmux #1 - nvim and friends
-exec i3-resurrect restore -w nvim
+exec /usr/bin/i3-resurrect restore -w nvim
 
 # tmux #2 - mutt and media player
-exec i3-resurrect restore -w util
+exec /usr/bin/i3-resurrect restore -w util
 
 # term splits ft. osrs, gotop and blank term
-exec i3-resurrect restore -w misc
+exec /usr/bin/i3-resurrect restore -w misc
