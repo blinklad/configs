@@ -266,7 +266,7 @@ exec fish -c mpd-listen
 
 # exec_always --no-startup-id ~/scripts/restore_saved_layouts.sh
 
-exec ~/.config/fish/functions/restore_layouts.fish
+exec fish -c restore_layouts
 
 # Path hacks
 # firefox 
