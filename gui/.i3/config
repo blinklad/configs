@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 # Keybindings.
 # =============================================================================
 
-# 'Windows' mod key
+# Super mod key
 set $mod Mod4
 
 # # Use Mouse+$mod to drag floating windows to their wanted position
@@ -138,9 +138,9 @@ bindsym $mod+d exec dmenu_run
 # Define names for default workspaces.  
 # Used to provide extended window manager hints (EWMH), too.
 set $ws1 "web"
-set $ws2 "code"
-set $ws3 "term"
-set $ws4 "mx"
+set $ws2 "nvim"
+set $ws3 "util"
+set $ws4 "misc"
 set $ws5 "a"
 set $ws6 "b"
 set $ws7 "c"
@@ -176,9 +176,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Workspace saving
 mode "save" {
   bindsym 1 exec "i3-resurrect save -w web"
-  bindsym 2 exec "i3-resurrect save -w code"
-  bindsym 3 exec "i3-resurrect save -w term"
-  bindsym 4 exec "i3-resurrect save -w mx"
+  bindsym 2 exec "i3-resurrect save -w nvim"
+  bindsym 3 exec "i3-resurrect save -w util"
+  bindsym 4 exec "i3-resurrect save -w misc"
   bindsym 5 exec "i3-resurrect save -w a"
   bindsym 6 exec "i3-resurrect save -w b"
   bindsym 7 exec "i3-resurrect save -w c"
@@ -200,9 +200,9 @@ bindsym $mod+s mode "save"
 # Workspace restoring
 mode "restore" {
   bindsym 1 exec "i3-resurrect restore -w web"
-  bindsym 2 exec "i3-resurrect restore -w code"
-  bindsym 3 exec "i3-resurrect restore -w term"
-  bindsym 4 exec "i3-resurrect restore -w mx"
+  bindsym 2 exec "i3-resurrect restore -w nvim"
+  bindsym 3 exec "i3-resurrect restore -w util"
+  bindsym 4 exec "i3-resurrect restore -w misc"
   bindsym 5 exec "i3-resurrect restore -w a"
   bindsym 6 exec "i3-resurrect restore -w b"
   bindsym 7 exec "i3-resurrect restore -w c"
@@ -223,7 +223,7 @@ bindsym $mod+n mode "restore"
 # =============================================================================
 
 # Disable titlebar. Required to get gaps to work. 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
 # If there is a single workspace, no gaps
 smart_gaps on
@@ -254,15 +254,26 @@ exec ~/.scripts/startupscript.sh
 # background
 exec feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg
 
-# Set the colour scheme with Pywal
-#exec wal -R
-
 # mpd
 exec fish -c mpd-listen
+
+# Set the colour scheme with Pywal
+#exec wal -R
 
 # =============================================================================
 # Set the workspaces 
 # =============================================================================
 
-# Workspace 1 - Browser
 # exec_always --no-startup-id ~/scripts/restore_saved_layouts.sh
+
+# firefox 
+exec i3-resurrect restore -w web
+
+# tmux #1 - nvim and friends
+exec i3-resurrect restore -w nvim
+
+# tmux #2 - mutt and media player
+exec i3-resurrect restore -w util
+
+# term splits ft. osrs, gotop and blank term
+exec i3-resurrect restore -w misc
