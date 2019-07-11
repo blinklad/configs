@@ -184,13 +184,22 @@ nmap <silent> <C-l> <Plug>(ale_detail)
 nmap <silent> <C-g> :close<cr>
 
 " Language client stuff
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ 'c': ['clangd'],
-  \ 'rust': ['rustup', 'run', 'nightly', 'rls']
-  \ }
+" let g:LanguageClient_serverCommands = {
+"   \ 'cpp': ['clangd'],
+"   \ 'c': ['clangd'],
+"   \ 'rust': ['rustup', 'run', 'nightly', 'rls']
+"   \ }
 
 " Automatically start language servers.
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
 let g:LanguageClient_autoStart = 1
 
 " Latex
@@ -201,12 +210,17 @@ let g:latex_fold_sections = []
 " Quick-save
 nmap <leader>w :w<CR>
 
+" Rust style guide requires tabs to be 4 spaces
+" Python needs it because Python
+au Filetype rust source ~/.config/configs/editor/.config/spacetab.vim
+au Filetype python source ~/.config/configs/editor/.config/spacetab.vim
 
 let g:deoplete#enable_at_startup = 1
 
 " =============================================================================
 "  Rust
 " =============================================================================
+
 " Rust is rust my dude
 autocmd BufReadPost *.rs setlocal filetype=rust
 autocmd FileType rust inoremap <leader>f {<CR><++><CR>}<Esc>/<++><CR>c4l
