@@ -46,7 +46,10 @@ Plugin 'sheerun/vim-polyglot'			" Sensible defaults for language packs
 Plugin 'vim-jp/vim-cpp'					" Extended C(pp) recognition 
 " Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
 Plugin 'vim-scripts/TagHighlight'		" Recognise ctags
-Plugin 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+Plugin 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 " Language server
 
 " Completion Plugin
@@ -59,6 +62,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'rust-lang/rust.vim'
 Plugin 'dag/vim-fish'
 Plugin 'godlygeek/tabular'
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " Aesthetics
 Plugin 'lifepillar/vim-solarized8'  " FOTM
@@ -198,6 +202,8 @@ let g:latex_fold_sections = []
 nmap <leader>w :w<CR>
 
 
+let g:deoplete#enable_at_startup = 1
+
 " =============================================================================
 "  Rust
 " =============================================================================
@@ -232,11 +238,20 @@ set completeopt=noinsert,menuone,noselect
 inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
 inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
 
-" Golang
+" =============================================================================
+" Go
+" =============================================================================
 let g:go_play_open_browser = 0
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/dev/go/bin")
+
+" =============================================================================
+" Python
+" =============================================================================
+
+" https://tobanwiebe.com/blog/2016/09/anaconda-python-linux
+let g:deoplete#sources#jedi#python_path = '/home/blinklad/dev/python/anaconda3/anaconda3/bin/python'
 
 " =============================================================================
 " # Editor settings

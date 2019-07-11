@@ -279,3 +279,13 @@ function fish_greeting
 
 	set_color normal
 end
+
+# Anaconda likes to trample over root packages - get around this
+# https://github.com/gtrichards/PHYS_T480_F18/issues/1
+source "/home/blinklad/dev/python/anaconda3/anaconda3/etc/fish/conf.d/conda.fish"
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# eval (eval /home/blinklad/dev/python/anaconda3/anaconda3/bin/conda "shell.fish" "hook" $argv)
+# # <<< conda initialize <<<
+
