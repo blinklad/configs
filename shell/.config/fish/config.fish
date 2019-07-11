@@ -130,6 +130,7 @@ end
 # 'Environment' variables
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x DOTNET_ROOT /opt/dotnet
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'

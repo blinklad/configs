@@ -9,6 +9,7 @@
 # https://tobanwiebe.com/blog/2016/09/anaconda-python-linux
 export PATH="$PATH:/home/blinklad/dev/python/anaconda3/anaconda3/bin"
 export PYTHONPATH="$PYTHONPATH:/path/to/anaconda3/lib/python3.6/site-packages"
+export DOTNET_ROOT=/opt/dotnet
 
 # Apply pywal theme to new terminals
 # Import colorscheme asychronously
