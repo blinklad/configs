@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Appending to PATH prevents Anaconda from being prioritized over the system $PATH.
+# https://tobanwiebe.com/blog/2016/09/anaconda-python-linux
+export PATH="$PATH:/home/blinklad/dev/python/anaconda3/anaconda3/bin"
+export PYTHONPATH="$PYTHONPATH:/path/to/anaconda3/lib/python3.6/site-packages"
+
 # Apply pywal theme to new terminals
 # Import colorscheme asychronously
 
@@ -67,4 +72,20 @@ shopt -s autocd
 
 HISTSIZE= HISTFILESIZE= 
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/blinklad/dev/python/anaconda3/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/blinklad/dev/python/anaconda3/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/blinklad/dev/python/anaconda3/anaconda3/etc/profile.d/conda.sh"
+#     else
+#		path	
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
 
