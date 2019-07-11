@@ -280,3 +280,8 @@ exec fish -c restore_layouts
 
 # term splits ft. osrs, gotop and blank term
 #exec python /usr/bin/i3-resurrect restore -w misc
+hide_edge_borders both
+default_border none
+default_border pixel
+default_floating_border none
+default_floating_border pixel 0
