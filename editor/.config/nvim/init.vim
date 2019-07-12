@@ -273,6 +273,8 @@ let g:deoplete#sources#jedi#python_path = '/home/blinklad/dev/python/anaconda3/a
 " =============================================================================
 " C#
 " =============================================================================
+autocmd FileType cs inoremap <leader>f <CR>{<CR><++><CR>}<Esc>/<++><CR>c4l
+autocmd BufWrite *.cs OmniSharpCodeFormat
 let g:OmniSharp_server_stdio = 0 " Opt-in stdio asynchronous completion 
 
 " =============================================================================
