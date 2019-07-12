@@ -63,6 +63,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'dag/vim-fish'
 Plugin 'godlygeek/tabular'
 Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'OmniSharp/omnisharp-vim'		" Microsoft's Java support
 
 " Aesthetics
 Plugin 'lifepillar/vim-solarized8'  " FOTM
@@ -159,7 +160,9 @@ let g:ale_rust_rls_config = {
 	\ }
 	\ }
 let g:ale_rust_rls_toolchain = ''
-let g:ale_linters = {'rust': ['rls']}
+let g:ale_linters = {
+			\ 'rust': ['rls'],
+			\ 'cs': ['OmniSharp']}
 let g:ale_sign_error = "✖"
 let g:ale_sign_warning = "⚠"
 let g:ale_sign_info = "i"
@@ -268,6 +271,11 @@ let g:go_bin_path = expand("~/dev/go/bin")
 let g:deoplete#sources#jedi#python_path = '/home/blinklad/dev/python/anaconda3/anaconda3/bin/python'
 
 " =============================================================================
+" C#
+" =============================================================================
+let g:OmniSharp_server_stdio = 0 " Opt-in stdio asynchronous completion 
+
+" =============================================================================
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
@@ -358,12 +366,6 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 " =============================================================================
 " ; as :
 nnoremap ; :
-
-" Ctrl+c and Ctrl+j as Esc
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
 
 " Move between splits
 nnoremap <leader>l <C-l>
