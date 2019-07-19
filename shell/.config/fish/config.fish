@@ -10,6 +10,7 @@ abbr -a ga 'git add -p'
 abbr -a cf ~/.config/configs/
 abbr -a u ~/Uni/
 abbr -a pac 'sudo pacman -Syu'
+abbr -a mu 'ncmpcpp'
 
 complete --command yay --wraps pacman
 
@@ -131,6 +132,8 @@ end
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x DOTNET_ROOT /opt/dotnet
+set -x GTK2_RC_FILES ~/.gtkrc-2.0
+set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
