@@ -11,6 +11,7 @@ abbr -a cf ~/.config/configs/
 abbr -a u ~/Uni/
 abbr -a pac 'sudo pacman -Syu'
 abbr -a mu 'ncmpcpp'
+abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
 
 complete --command yay --wraps pacman
 
