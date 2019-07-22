@@ -6,6 +6,6 @@ dir=($dirname "$file")
 
 # Regex checks file extension and executes commands
 case "$file" in 
-		*\.tex) pdflatex "$file" ;;
+		*\.tex) pdflatex -interaction nonstopmode -output-directory $dir -no-file-line-error "$file" ;;
 		*\.java) javac "$file" ;;
 esac
