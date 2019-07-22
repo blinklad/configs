@@ -9,12 +9,13 @@ set_from_resource $iw color4	   #b8b8b8
 set_from_resource $sp color2	   #383834
 set_from_resource $sp color2	   #383834
 set				  $cs			   #a7a28c
+set				  $border		   #615c42
+set				  $cborder		   #353325
 
-# Set the window style	
-# Set the window style |border|bckgrnd|text|indicator|child borer
-client.focused			$cs		$bg		$cs  $cs $cs
-client.unfocused		$bg		$cs		$bg  $bg $bg
-client.focused_inactive $bg		$bg		$bg  $bg $bg
+# Set the window style |border|bckgrnd|text|indicator|child border
+client.focused			$cborder		$bg		$cs    $cs	  $border
+client.unfocused		$ac		$cs		$bg    $bg	  $cborder
+client.focused_inactive $ac		$bg		$bg    $bg 	  $cborder
 
 # =============================================================================
 # Fonts 
@@ -223,7 +224,7 @@ bindsym $mod+n mode "restore"
 # =============================================================================
 
 # Disable titlebar. Required to get gaps to work. 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 5
 
 # If there is a single workspace, no gaps
 smart_gaps on
@@ -232,8 +233,8 @@ smart_gaps on
 smart_borders on
 
 # set gaps manually 
-#gaps inner 2
-#gaps outer 2 
+gaps inner 8
+gaps outer 8 
 
 # =============================================================================
 # Startup scripts 
@@ -252,7 +253,7 @@ exec_always --no-startup-id nm-applet
 exec ~/.scripts/startupscript.sh
 
 # background
-exec feh --bg-fill ~/pictures/backgrounds/aesthetic-thing.jpg
+exec feh --bg-fill ~/pictures/backgrounds/11110f.png
 
 # mpd
 exec fish -c mpd-listen
@@ -264,24 +265,16 @@ exec fish -c mpd-listen
 # Set the workspaces 
 # =============================================================================
 
-# exec_always --no-startup-id ~/scripts/restore_saved_layouts.sh
-
 exec fish -c restore_layouts
 
-# Path hacks
-# firefox 
-#exec python /usr/bin/i3-resurrect restore -w web
-
-# tmux #1 - nvim and friends
-#exec python /usr/bin/i3-resurrect restore -w nvim
-
-# tmux #2 - mutt and media player
-#exec python /usr/bin/i3-resurrect restore -w util
+# hide mouse
+exec_always --no-startup-id unclutter -idle 1 -root
 
 # term splits ft. osrs, gotop and blank term
 #exec python /usr/bin/i3-resurrect restore -w misc
-hide_edge_borders both
-default_border none
-default_border pixel
-default_floating_border none
-default_floating_border pixel 0
+
+# hide_edge_borders both
+# default_border none
+# default_border pixel
+# default_floating_border none
+# default_floating_border pixel 0
