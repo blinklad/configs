@@ -1,0 +1,101 @@
+\documentclass[12pt,english]{article}     % Best article
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}               % Consistent charater encoding and input 
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.6cm,bmargin=2.6cm,lmargin=2.6cm,rmargin=2.6cm}% Page times times
+\usepackage{fancyhdr}
+\pagestyle{fancy}                         % Fancy fancy times
+\setcounter{secnumdepth}{4}			  	  % Subsubsections don't appear in TOC
+\setcounter{tocdepth}{4}                  % 4 level nesting in table of contents
+\usepackage{graphicx} 					  % Used for advanced figure and graphics
+\usepackage{setspace}
+\doublespacing{}  						  % Double line spacing w/ setspace
+\makeatletter  							  % Makes @ a character for macro purposes
+\makeatother							  % More macro purposes, unsure
+\usepackage{multicol} 					  % Multiple column documents, ie. newspaper
+\usepackage{changepage} 				  % Change style mid document
+\usepackage{enumitem}  					  % Better lists  
+\usepackage[bottom]{footmisc}
+\usepackage{lastpage}
+\usepackage{babel}
+\usepackage{blindtext}
+\setlist[itemize]{noitemsep, topsep=0pt}  % No gross whitespace
+\fancyhf{}								  % Fancy headers
+\pretolerance=10000						  % No freaking out over long references
+\tolerance=2000 						  % Same deal
+\emergencystretch=10pt					  % Stretch to accommodate references
+\cfoot{\thepage}						  % Manipulate page footers
+\usepackage{lipsum}				  		  % Blind text, fancy times
+
+% Commands and Macros
+\newcommand{\quotes}[1]{``#1``}
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+
+% Useful snippets
+% \includegraphics[width=0.3\textwidth]{../images/foo.png}  Image template
+
+\begin{document} 
+\title{KIT203 ICT Project Management and Modeling}
+\author{Evan Harvey}
+\maketitle 
+
+\newpage{}
+\tableofcontents{}
+\listoffigures	
+
+\newpage
+\chead{Executive Summary}
+\section{Executive Summary}
+\lipsum[1]
+
+\newpage{}
+\chead{Introduction}
+\section{Introduction}
+\lipsum[1]
+\newpage
+
+\invisiblesection{Foobar}
+\subsection{Diagram}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.6\textheight]{~/pictures/backgrounds/eldar.jpg}
+\caption{Swimlane Diagram}
+\end{figure}
+\lipsum[1]
+
+\noindent \lipsum[1]
+
+\newpage
+\subsection{Fooquz}
+\begin{figure}[!htb]
+\centering
+	\includegraphics[width=0.8\textwidth, height=0.6\textheight]{~/pictures/backgrounds/eldar.jpg}
+	\caption{Eldar}
+\end{figure}
+\lipsum[1]
+
+\noindent \lipsum[1]
+
+\newpage
+\subsection{Foobaz}
+\begin{figure}[!htb]
+\centering
+	\includegraphics[width=0.8\textwidth, height=0.6\textheight]{images/product-model.png}
+	\caption{Incels}
+\end{figure}
+
+\lipsum[1]
+
+\noindent \lipsum[1]
+\newpage
+\section{Conclusion}
+\lipsum[1]
+
+\newpage
+\chead{Appendices}
+\section{Appendix}
+\end{document}
