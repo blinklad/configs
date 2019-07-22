@@ -468,7 +468,7 @@ inoremap <leader><leader> <c-^>
 " =============================================================================
 
 " Clear up tex junk
-autocmd VimLeave *.tex !~/.scripts/texclear.sh %
+autocmd VimLeave *.tex !~/.config/configs/bins/scripts/texclear.sh %
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
