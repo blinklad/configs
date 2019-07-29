@@ -1,0 +1,493 @@
+\documentclass[12pt,english]{article}     % Best article
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}               % Consistent charater encoding and input 
+\usepackage[table]{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.6cm,bmargin=2.6cm,lmargin=2.6cm,rmargin=2.6cm}% Page times times
+\usepackage{fancyhdr}
+\pagestyle{fancy}                         % Fancy fancy times
+\setcounter{secnumdepth}{4}			  	  % Subsubsections don't appear in TOC
+\setcounter{tocdepth}{4}                  % 4 level nesting in table of contents
+\usepackage{graphicx} 					  % Used for advanced figure and graphics
+\usepackage{setspace}
+\doublespacing{}  						  % Double line spacing w/ setspace
+\makeatletter  							  % Makes @ a character for macro purposes
+\makeatother							  % More macro purposes, unsure
+\usepackage{multicol} 					  % Multiple column documents, ie. newspaper
+\usepackage{changepage} 				  % Change style mid document
+\usepackage{enumitem}  					  % Better lists  
+\usepackage[bottom]{footmisc}
+\usepackage{lastpage}
+\usepackage{babel}
+\usepackage{blindtext}
+\setlist[itemize]{noitemsep, topsep=0pt}  % No gross whitespace
+\fancyhf{}								  % Fancy headers
+\pretolerance=10000						  % No freaking out over long references
+\tolerance=2000 						  % Same deal
+\emergencystretch=10pt					  % Stretch to accommodate references
+\cfoot{\thepage}						  % Manipulate page footers
+\usepackage{lipsum}				  		  % Blind text, fancy times
+
+% Table stufff
+\setlist{nolistsep}
+\definecolor{green}{HTML}{8188ad}
+\definecolor{myGreen}{HTML}{435094}
+
+% Commands and Macros
+\newcommand{\quotes}[1]{``#1``}
+\newcommand\invisiblesection[1]{%
+  \refstepcounter{section}%
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \sectionmark{#1}}
+
+% Useful snippets
+% \includegraphics[width=0.3\textwidth]{../images/foo.png}  Image template
+
+\begin{document} 
+\title{KIT206 Software Design and Development}
+\author{Evan Harvey\\Vinh Nguyen}
+\maketitle 
+
+\newpage{}
+\tableofcontents{}
+\listoffigures	
+
+\newpage{}
+\chead{KIT206 Design Report}
+\section{Structured Use Cases}
+
+\subsection{Use Case \#1}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+\subsection{Use Case \#2}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#3}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#4}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#5}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#6}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#8}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\subsection{Use Case \#8}
+\textbf{Requirement:}
+\\
+\textit{The text from the requirement column of the RTM}
+\\
+\textbf{Overview:}
+\\
+\textit{<Text description of the use case. This should describe precisely what\
+	the scenario is taking care of.>}
+\\
+\textbf{Preconditions:}
+\\
+\textit{<List numerically the assumptions required before this use case can be\
+	executed.>}
+\\
+\begin{enumerate}
+	\item \[\forall{x} \in {P_c} \Longrightarrow \texttt{your software sucks}\]
+\item ...
+\item ...
+\end{enumerate}
+\begin{center}
+
+\textbf{Scenario:}
+\begin{tabularx}{\textwidth}[t]{XX}
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} & \\
+\hline
+<Specify an Action> & 
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[1.1] <Describe the software reaction>
+	\item[1.2] <Next software reaction>
+		\\
+\end{itemize} 
+\end{minipage}\\
+
+\arrayrulecolor{green}\hline
+\textbf{\textcolor{myGreen}{Action Software Reaction}} \\
+\hline
+
+<Specify an Action>&
+\begin{minipage}[t]{\linewidth}%
+\begin{itemize}
+	\item[2.1] <Describe the software reaction>
+	\item[2.2] <Next software reaction>
+		\\
+\end{itemize}
+\end{minipage}\\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+
+
+\end{document}
