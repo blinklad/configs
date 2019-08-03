@@ -37,6 +37,9 @@ set $mod Mod4
 # # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Go to MRU workspace
+bindsym $mod+comma workspace back_and_forth
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
