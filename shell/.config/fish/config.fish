@@ -42,6 +42,10 @@ if command -v rg > /dev/null
 	abbr -a grep 'rg'
 end
 
+if command -v zathura > /dev/null
+	abbr -a z 'zathura --fork'
+end
+
 if command -v bat > /dev/null
 	abbr -a cat 'bat'
 end
