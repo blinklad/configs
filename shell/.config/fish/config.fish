@@ -175,6 +175,8 @@ set FISH_CLIPBOARD_CMD "cat"
 function fish_user_key_bindings
 	bind \cz 'fg>/dev/null ^/dev/null'
 	bind \cl 'fish_clear; fish_prompt'
+	bind \cf 'fzf-cd-widget'
+
 	if functions -q fzf_key_bindings
 		fzf_key_bindings
 	end
