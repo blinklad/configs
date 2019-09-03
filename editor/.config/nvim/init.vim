@@ -569,7 +569,7 @@ command! -nargs=* Make | let $mkpath = SetMkfile() | make <args> -C $mkpath | cw
 " =============================================================================
 " LaTeX
 " =============================================================================
-autocmd FileType tex map 	<leader>B <Esc>:!pdflatex -q % %.pdf <CR>
+autocmd FileType tex map 	<leader>B <Esc>:!xelatex -q % %.pdf <CR>
 autocmd FileType tex set conceallevel=2
 
 " =============================================================================

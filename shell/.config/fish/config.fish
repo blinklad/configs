@@ -15,7 +15,7 @@ abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py
 
 complete --command yay --wraps pacman
 
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.cargo/bin
 
 if command -v yay > /dev/null
 	abbr -a p 'yay'
