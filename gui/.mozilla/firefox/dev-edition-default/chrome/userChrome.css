@@ -42,8 +42,8 @@ pointer-events: auto !important;
 
 /* nav bar is semi opaque when unhovered */
 #nav-bar > * {
-opacity:0.5;
-transition: opacity 0.3s;
+opacity:0.5 !important;
+transition: opacity 0.3s !important;
 }
 
 #nav-bar:hover > * {
@@ -204,10 +204,10 @@ toolbarspring {
     max-width: 300px !important;
 }
 
-@-moz-document url(chrome://browser/content/browser.xul) {
+@-moz-document url(chrome://browser/content/browser.xhtml) {
 	/* tabs on bottom of window */
 	#navigator-toolbox { -moz-box-ordinal-group: 10; }
-	#titlebar { -moz-box-ordinal-group: 10; }
+	#titlebar { -moz-box-ordinal-group: 100; } /* this is magic */ 
 	#urlbar-results { margin-top: -35vh !important; }
 	.urlbarView-body-inner { }
 	#urlbarView-results { }
