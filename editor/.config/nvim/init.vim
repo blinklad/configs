@@ -571,6 +571,13 @@ command! -nargs=* Make | let $mkpath = SetMkfile() | make <args> -C $mkpath | cw
 " =============================================================================
 autocmd FileType tex map 	<leader>B <Esc>:!xelatex -q % %.pdf <CR>
 autocmd FileType tex set conceallevel=2
+=======
+
+" Don't use vim-rooter if i'm working on latex.
+autocmd BufEnter *.tex let b:is_tex=1
+if !exists("b:is_tex")
+	autocmd BufEnter * :Rooter
+endif
 
 " =============================================================================
 " # Footer
