@@ -36,17 +36,23 @@ abbr -a gd ~/dev/
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Fzf																		  #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+# Directory hopping
 abbr -a fu 'cd ~/Uni/ && fzf-cd-widget'
 abbr -a fp 'cd ~/dev/ && fzf-cd-widget'
 abbr -a fw 'cd ~/.vimwiki/ && fzf-cd-widget'
 abbr -a fi 'cd $PICTURES && fzf-cd-widget'
 
-
+# Changing files
 abbr -a cu 'cd ~/Uni/; nvim (fzf)'
 abbr -a cde 'cd ~/dev/; nvim (fzf)' 
 
-complete --command yay --wraps pacman
+# Opening files
+abbr -a ou 'cd ~/Uni; xdg-open (fzf)'
+abbr -a ow 'cd ~/Uni; xdg-open (fzf)'
 
+
+complete --command yay --wraps pacman
 set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.cargo/bin ~/.local/bin/
 
 if command -v yay > /dev/null
