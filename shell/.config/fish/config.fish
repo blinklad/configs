@@ -5,12 +5,14 @@ abbr -a m make
 abbr -a g git
 abbr -a cr 'cargo run'
 abbr -a ct 'cargo test'
-abbr -a gc 'git checkout'
+abbr -a gp 'git commit && git push origin master'
 abbr -a ga 'git add -p'
+abbr -a gaa 'git add .'
 abbr -a pac 'sudo pacman -Syu'
 abbr -a mu 'ncmpcpp'
-# abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
+abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
 abbr -a cf 'nvim /home/blinklad/.config/configs/shell/.config/fish/config.fish'
+
 # Directory abbreviations
 abbr -a gc ~/.config/configs/
 abbr -a gu ~/Uni/
