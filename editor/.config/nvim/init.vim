@@ -502,7 +502,7 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki', 'path_html': '~/Dropbox/notepage', 'custom_wiki2html': '~/scripts/wiki2html.sh', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/.notepage', 'custom_wiki2html': '~/scripts/wiki2html.sh', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd FileType html inoremap ;i <em></em><Space><++><Esc>FeT>i
 
@@ -549,7 +549,7 @@ autocmd FileType *.c map 			<leader>B <Esc>:wall<CR>:Make<CR>
 "   autocmd FileType cpp,c call SetLSPShortcuts()
 " augroup END
 
-" Makes for c projects 
+" Makefile function
 fun! SetMkfile()
   let filemk = "Makefile"
   let pathmk = "./"
@@ -577,6 +577,11 @@ autocmd BufEnter *.tex let b:is_tex=1
 if !exists("b:is_tex")
 	autocmd BufEnter * :Rooter
 endif
+
+" =============================================================================
+" Markdown
+" =============================================================================
+autocmd FileType markdown map <leader>c I<++><CR>%1.<CR>---<CR><ESC>/*<++>*<CR>c4l
 
 " =============================================================================
 " # Footer

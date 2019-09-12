@@ -27,3 +27,7 @@ __pycache__
 tags
 target/*
 target
+*.log
+*.aux
+*.toc
+*.lof

@@ -1,21 +1,30 @@
 # Abbreviations
 abbr -a c cargo
-abbr -a cr 'cargo run'
-abbr -a ct 'cargo test'
 abbr -a e nvim
 abbr -a m make
 abbr -a g git
+abbr -a cr 'cargo run'
+abbr -a ct 'cargo test'
 abbr -a gc 'git checkout'
 abbr -a ga 'git add -p'
-abbr -a cf ~/.config/configs/
-abbr -a u ~/Uni/
 abbr -a pac 'sudo pacman -Syu'
 abbr -a mu 'ncmpcpp'
-abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
+# abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
+abbr -a cf 'nvim /home/blinklad/.config/configs/shell/.config/fish/config.fish'
+# Directory abbreviations
+abbr -a gc ~/.config/configs/
+abbr -a gu ~/Uni/
+abbr -a gw ~/.vimwiki
+abbr -a cv 'nvim /home/blinklad/.vimrc'
+#abbr -a
+#abbr -a
+#abbr -a
+#abbr -a
+#abbr -a
 
 complete --command yay --wraps pacman
 
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.cargo/bin
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.cargo/bin ~/.local/bin/
 
 if command -v yay > /dev/null
 	abbr -a p 'yay'
@@ -26,9 +35,8 @@ else
 end
 
 if command -v exa > /dev/null
-	abbr -a l 'exa'
+	abbr -a l 'exa -l'
 	abbr -a ls 'exa'
-	abbr -a ll 'exa -l'
 	abbr -a lll 'exa -la'
 	abbr -a lh 'exa -lh'
 	abbr -a lha 'exa -lha'
@@ -139,6 +147,8 @@ set -x VISUAL nvim
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
+set -x BACKGROUNDS /home/blinklad/pictures/backgrounds/
+set -x SCRIPTS /home/blinklad/.scripts/
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
