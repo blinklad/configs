@@ -1,28 +1,49 @@
-# Abbreviations
-abbr -a c cargo
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# General programs                                                            # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 abbr -a e nvim
-abbr -a m make
-abbr -a g git
+abbr -a pac 'sudo pacman -Syu'
+abbr -a c cargo
 abbr -a cr 'cargo run'
 abbr -a ct 'cargo test'
+abbr -a g git
 abbr -a gp 'git commit && git push origin master'
 abbr -a ga 'git add -p'
 abbr -a gaa 'git add .'
-abbr -a pac 'sudo pacman -Syu'
+abbr -a m make
 abbr -a mu 'ncmpcpp'
 abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
-abbr -a cf 'nvim /home/blinklad/.config/configs/shell/.config/fish/config.fish'
 
-# Directory abbreviations
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Configs																	  # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+abbr -a cv 'nvim ~/.vimrc'
+abbr -a ci3 'nvim ~/.config/i3/config'
+abbr -a ct 'nvim ~/.config/i3/config'
+abbr -a cw "nvim ~/.vimwiki/index.md"
+abbr -a cf 'nvim ~/.config/configs/shell/.config/fish/config.fish'
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Directory																	  # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 abbr -a gc ~/.config/configs/
 abbr -a gu ~/Uni/
 abbr -a gw ~/.vimwiki
-abbr -a cv 'nvim /home/blinklad/.vimrc'
-#abbr -a
-#abbr -a
-#abbr -a
-#abbr -a
-#abbr -a
+abbr -a gd ~/dev/
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Fzf																		  #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+abbr -a fu 'cd ~/Uni/ && fzf-cd-widget'
+abbr -a fp 'cd ~/dev/ && fzf-cd-widget'
+abbr -a fw 'cd ~/.vimwiki/ && fzf-cd-widget'
+abbr -a fi 'cd $PICTURES && fzf-cd-widget'
+
+
+abbr -a cu 'cd ~/Uni/; nvim (fzf)'
+abbr -a cde 'cd ~/dev/; nvim (fzf)' 
 
 complete --command yay --wraps pacman
 
@@ -149,7 +170,8 @@ set -x VISUAL nvim
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
-set -x BACKGROUNDS /home/blinklad/pictures/backgrounds/
+set -x BACKGROUNDS /home/blinklad/documents/pictures/backgrounds/
+set -x PICTURES /home/blinklad/documents/pictures/
 set -x SCRIPTS /home/blinklad/.scripts/
 
 # Fish git prompt
@@ -176,7 +198,9 @@ setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
 
 setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
 setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
-setenv FZF_DEFAULT_OPTS '--height 20%'
+setenv FZF_DEFAULT_OPTS "--height 25% --preview 'bat --style=numbers --color=always {}'"
+set -U FZF_TMUX 1
+set -U FZF_ENABLE_OPEN_PREVIEW 1
 
 setenv OS_USERNAME harveyem@utas.edu.au 
 
