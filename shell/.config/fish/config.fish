@@ -49,7 +49,8 @@ abbr -a cde 'cd ~/dev/; nvim (fzf)'
 
 # Opening files
 abbr -a ou 'cd ~/Uni; xdg-open (fzf)'
-abbr -a ow 'cd ~/Uni; xdg-open (fzf)'
+abbr -a ow 'cd ~/.vimwiki; xdg-open (fzf)'
+abbr -a oc 'cd ~/.config/; nvim (find . | fzf)' # Hack for hidden files
 
 
 complete --command yay --wraps pacman
