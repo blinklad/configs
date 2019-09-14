@@ -244,7 +244,7 @@ gaps outer 8
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id $SCRIPTS/launch.sh
+exec_always --no-startup-id ~/.scripts/launch.sh
 
 # compton
 exec_always --no-startup-id compton
@@ -253,10 +253,10 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id nm-applet
 
 # wifi 
-exec $SCRIPTS/startupscript.sh
+exec ~/.scripts/startupscript.sh
 
 # background
-exec feh --bg-fill $BACKGROUNDS/11110f.png
+exec feh --bg-fill ~/documents/pictures/backgrounds/11110f.png
 
 # mpd
 exec fish -c mpd-listen
