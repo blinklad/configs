@@ -6,11 +6,19 @@
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	safecrlf = true
+	editor = nvim
 
 [url "git@github.com:"]
 	insteadOf = gh:
 
 [github]
 	user = blinklad
+
 [credential]
 	helper = cache --timeout=3600
+
+[diff]
+	tool = vimdiff
+
+[merge]
+	tool = vimdiff

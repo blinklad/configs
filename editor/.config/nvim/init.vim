@@ -66,15 +66,16 @@ Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'OmniSharp/omnisharp-vim'		" Microsoft's Java support
 
 " Aesthetics
-Plugin 'lifepillar/vim-solarized8'  " FOTM
-Plugin 'junegunn/goyo.vim'			" Distraction free
+Plugin 'lifepillar/vim-solarized8'		" FOTM
+Plugin 'junegunn/goyo.vim'				" Distraction free
+Plugin 'bkbncn/vim-colorschemes-picker' " Random colour schemes
 
 call vundle#end()
-
 
 " =============================================================================
 "  Colors 
 " =============================================================================
+
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
     set inccommand=nosplit
@@ -93,8 +94,13 @@ endif
 
 set background=dark
 set termguicolors 
-colorscheme base16-atelier-dune " solarized8 
+colorscheme base16-atelier-dune
 " let base16colorspace=256
+
+" random colour themes
+let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors'
+autocmd BufWritePost * CSnext
+
 
 hi Normal ctermbg=NONE
 
@@ -116,7 +122,7 @@ let g:secure_modelines_allowed_items = [
                 \ "foldmethod",  "fdm",
                 \ "readonly",    "ro",   "noreadonly", "noro",
                 \ "rightleft",   "rl",   "norightleft", "norl",
-                \ "colorcolumn"
+                \ "colorcolumn",
                 \ ]
 
 " Distraction free
