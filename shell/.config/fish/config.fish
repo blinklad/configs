@@ -7,7 +7,7 @@ abbr -a c cargo
 abbr -a cr 'cargo run'
 abbr -a ct 'cargo test'
 abbr -a g git
-abbr -a gp 'git commit && git push origin master'
+abbr -a gp 'git commit && git push'
 abbr -a ga 'git add -p'
 abbr -a gaa 'git add .'
 abbr -a m make

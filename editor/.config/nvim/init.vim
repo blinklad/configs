@@ -68,7 +68,7 @@ Plugin 'OmniSharp/omnisharp-vim'		" Microsoft's Java support
 " Aesthetics
 Plugin 'lifepillar/vim-solarized8'		" FOTM
 Plugin 'junegunn/goyo.vim'				" Distraction free
-Plugin 'bkbncn/vim-colorschemes-picker' " Random colour schemes
+" Plugin 'bkbncn/vim-colorschemes-picker' " Random colour schemes
 
 call vundle#end()
 
@@ -98,8 +98,8 @@ colorscheme base16-atelier-dune
 " let base16colorspace=256
 
 " random colour themes
-let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors'
-autocmd BufWritePost * CSnext
+" let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors'
+" autocmd BufWritePost * CSnext
 
 
 hi Normal ctermbg=NONE
