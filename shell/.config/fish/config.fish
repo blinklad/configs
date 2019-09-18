@@ -214,6 +214,8 @@ setenv OS_USERNAME harveyem@utas.edu.au
 # See https://github.com/fish-shell/fish-shell/issues/772
 set FISH_CLIPBOARD_CMD "cat"
 
+fish_ssh_agent
+
 function fish_user_key_bindings
 	bind \cz 'fg>/dev/null ^/dev/null'
 	bind \cl 'fish_clear; fish_prompt'
