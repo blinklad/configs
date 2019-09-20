@@ -68,7 +68,7 @@ Plugin 'OmniSharp/omnisharp-vim'		" Microsoft's Java support
 " Aesthetics
 Plugin 'lifepillar/vim-solarized8'		" FOTM
 Plugin 'junegunn/goyo.vim'				" Distraction free
-" Plugin 'bkbncn/vim-colorschemes-picker' " Random colour schemes
+" Plugin 'blinklad/vim-rand-colour' " Random colour schemes
 
 call vundle#end()
 
