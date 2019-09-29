@@ -49,7 +49,7 @@ abbr -a fi 'builtin cd $PICTURES && fzf-cd-widget'
 # Changing files
 abbr -a cu 'builtin cd ~/Uni/; nvim (fzf)'
 abbr -a cde 'builtin cd ~/dev/; nvim (fzf)' 
-abbr -a cr 'builtin cd (git rev-parse --show-toplevel); xdg-open (find . | fzf)'
+abbr -a cr 'builtin cd (git rev-parse --show-toplevel); nvim (find . | fzf)'
 
 # Opening files
 abbr -a ou 'builtin cd ~/Uni; xdg-open (fzf)'
@@ -219,6 +219,12 @@ setenv OS_USERNAME harveyem@utas.edu.au
 set FISH_CLIPBOARD_CMD "cat"
 
 fish_ssh_agent # I like SSH keys
+
+# Base16 Shell
+if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/.themes/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+end
 
 function cd
     if count $argv > /dev/null

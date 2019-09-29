@@ -27,6 +27,7 @@ Plugin 'romainl/vim-cool'			" Make hlsearch bearable
 
 " GUI enhancements
 Plugin 'itchyny/lightline.vim'
+Plugin 'felixjung/vim-base16-lightline'
 Plugin 'w0rp/ale'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'andymass/vim-matchup'
@@ -94,7 +95,7 @@ endif
 
 set background=dark
 set termguicolors 
-colorscheme base16-atelier-dune
+colorscheme base16-atelier-lakeside
 " let base16colorspace=256
 
 " random colour themes
@@ -129,12 +130,12 @@ let g:secure_modelines_allowed_items = [
 let g:goyo_height=100
 
 " Lightline
-" let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = {
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
 \ }
+let g:lightline.colorscheme = 'one'
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
