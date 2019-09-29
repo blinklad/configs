@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Game 409416265891971072
-Exec=/usr/lib/jvm/java-12-openjdk/bin/java %u
+Exec=/usr/lib/jvm/java-8-openjdk/jre/bin/java %u
 Type=Application
 NoDisplay=true
 Categories=Discord;Games;

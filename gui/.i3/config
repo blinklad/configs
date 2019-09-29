@@ -8,9 +8,9 @@ set_from_resource $fw color3	   #585858
 set_from_resource $iw color4	   #b8b8b8
 set_from_resource $sp color2	   #383834
 set_from_resource $sp color2	   #383834
-set				  $cs			   #a7a28c
-set				  $border		   #615c42
-set				  $cborder		   #353325
+set_from_resource $cs color4			   #a7a28c
+set_from_resource $border		   color4
+set_from_resource $cborder color0		   #353325
 
 # Set the window style |border|bckgrnd|text|indicator|child border
 client.focused			$cborder		$bg		$cs    $cs	  $border
@@ -227,7 +227,7 @@ bindsym $mod+n mode "restore"
 # =============================================================================
 
 # Disable titlebar. Required to get gaps to work. 
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 2
 
 # If there is a single workspace, no gaps
 smart_gaps on
