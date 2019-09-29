@@ -6,14 +6,18 @@ abbr -a pac 'sudo pacman -Syu'
 abbr -a c cargo
 abbr -a cr 'cargo run'
 abbr -a ct 'cargo test'
-abbr -a g git
-abbr -a gp 'git commit && git push'
-abbr -a ga 'git add -p'
-abbr -a gaa 'git add .'
 abbr -a m make
 abbr -a mu 'ncmpcpp'
 abbr -a ankdown 'python3 ~/.local/lib/python3.7/site-packages/ankdown/ankdown.py'
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Git																	  # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+abbr -a g git
+abbr -a gp 'git commit && git push'
+abbr -a ga 'git add -p'
+abbr -a gaa 'git add .'
+abbr -a gs 'git status' # aliases ghostscript
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Configs																	  # 
