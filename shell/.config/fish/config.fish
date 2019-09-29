@@ -49,7 +49,7 @@ abbr -a fi 'builtin cd $PICTURES && fzf-cd-widget'
 # Changing files
 abbr -a cu 'builtin cd ~/Uni/; nvim (fzf)'
 abbr -a cde 'builtin cd ~/dev/; nvim (fzf)' 
-abbr -a cr 'builtin cd (git rev-parse --show-toplevel); xdg-open (fzf)'
+abbr -a cr 'builtin cd (git rev-parse --show-toplevel); xdg-open (find . | fzf)'
 
 # Opening files
 abbr -a ou 'builtin cd ~/Uni; xdg-open (fzf)'
