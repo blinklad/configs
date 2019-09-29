@@ -214,7 +214,15 @@ setenv OS_USERNAME harveyem@utas.edu.au
 # See https://github.com/fish-shell/fish-shell/issues/772
 set FISH_CLIPBOARD_CMD "cat"
 
-fish_ssh_agent
+fish_ssh_agent # I like SSH keys
+
+function cd
+    if count $argv > /dev/null
+        builtin cd "$argv"; and exa -l
+    else
+        builtin cd ~; and exa -l
+    end
+end
 
 function fish_user_key_bindings
 	bind \cz 'fg>/dev/null ^/dev/null'
