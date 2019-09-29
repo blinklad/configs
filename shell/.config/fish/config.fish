@@ -38,19 +38,19 @@ abbr -a gd ~/dev/
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 # Directory hopping
-abbr -a fu 'cd ~/Uni/ && fzf-cd-widget'
-abbr -a fw 'cd ~/.vimwiki/ && fzf-cd-widget'
-abbr -a fi 'cd $PICTURES && fzf-cd-widget'
+abbr -a fu 'builtin cd ~/Uni/ && fzf-cd-widget'
+abbr -a fw 'builtin cd ~/.vimwiki/ && fzf-cd-widget'
+abbr -a fi 'builtin cd $PICTURES && fzf-cd-widget'
 
 # Changing files
-abbr -a cu 'cd ~/Uni/; nvim (fzf)'
-abbr -a cde 'cd ~/dev/; nvim (fzf)' 
-abbr -a cr 'cd (git rev-parse --show-toplevel); xdg-open (fzf)'
+abbr -a cu 'builtin cd ~/Uni/; nvim (fzf)'
+abbr -a cde 'builtin cd ~/dev/; nvim (fzf)' 
+abbr -a cr 'builtin cd (git rev-parse --show-toplevel); xdg-open (fzf)'
 
 # Opening files
-abbr -a ou 'cd ~/Uni; xdg-open (fzf)'
-abbr -a ow 'cd ~/.vimwiki; xdg-open (fzf)'
-abbr -a oc 'cd ~/.config/; nvim (find . | fzf)' # Hack for hidden files
+abbr -a ou 'builtin cd ~/Uni; xdg-open (fzf)'
+abbr -a ow 'builtin cd ~/.vimwiki; xdg-open (fzf)'
+abbr -a oc 'builtin cd ~/.config/; nvim (find . | fzf)' # Hack for hidden files
 
 complete --command yay --wraps pacman
 set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin ~/.cargo/bin ~/.local/bin/
