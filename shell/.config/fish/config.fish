@@ -248,29 +248,29 @@ function fish_prompt
 	set_color brblack
 	echo -n "["(date "+%H:%M")"] "
 	set_color blue
-	echo -n 'evan'
+	echo -ne '\e[2mevan'
 
 	set_color brblack
 	echo -n ':'
 	set_color yellow
 
 	if [ $PWD = $HOME ]
-		echo -n 'home'
+		echo -ne '\e[2mhome'
 	else
 		echo -n (basename $PWD)
 	end
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color red
-	echo -n 'λ '
+	echo -ne '\e[2mλ '
 	set_color normal
 end
 
 function fish_greeting
 	echo
-	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
-	echo -e (uptime -p | sed 's/^up //' | awk '{print " \\\\e[1mUptime: \\\\e[0;32m"$0"\\\\e[0m"}')
-	echo -e (uname -n | awk '{print " \\\\e[1mHostname: \\\\e[0;32m"$0"\\\\e[0m"}')
+	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;94m"$0"\\\\e[0m"}')
+	echo -e (uptime -p | sed 's/^up //' | awk '{print " \\\\e[1mUptime: \\\\e[0;94m"$0"\\\\e[0m"}')
+	echo -e (uname -n | awk '{print " \\\\e[1mHostname: \\\\e[0;94m"$0"\\\\e[0m"}')
 	echo -e " \\e[1mDisk usage:\\e[0m"
 	echo
 	echo -ne (\
