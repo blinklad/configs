@@ -133,8 +133,7 @@ bindsym $mod+Shift+m exec firefox --new-window https://mylo.utas.edu.au/d2l/home
 bindsym $mod+Shift+v exec termite -e nvim
 
 # start dmenu 
-bindsym $mod+d exec dmenu_run
-
+bindsym $mod+d exec dmenu_run -b -i -l 10 -nb \#1c2e4d
 # =============================================================================
 # Workspaces 
 # =============================================================================
