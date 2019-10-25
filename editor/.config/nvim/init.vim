@@ -15,13 +15,11 @@ call vundle#begin()
 " Load plugins
 " VIM enhancements
 Plugin 'VundleVim/Vundle.vim'       " Plugin manager
-Plugin 'scrooloose/nerdtree'	    " Hackerman
 Plugin 'tpope/vim-sensible'		    " Sensible defaults
-" Plugin 'scrooloose/syntastic'	    " Syntax highlighting for most things
 Plugin 'vimwiki/vimwiki'		    " Keep my life in check
-Plugin 'Shougo/deoplete.nvim'	    " Async completion engine
+"Plugin 'Shougo/deoplete.nvim'	    " Async completion engine
 Plugin 'tpope/vim-surround'		    " Not vim without this
-Plugin 'https://github.com/Ron89/thesaurus_query.vim' 
+" Plugin 'https://github.com/Ron89/thesaurus_query.vim' TODO
 Plugin 'mhinz/vim-startify'			" Cow fortunes
 Plugin 'romainl/vim-cool'			" Make hlsearch bearable
 
@@ -35,17 +33,15 @@ Plugin 'chriskempson/base16-vim' " Color scheme templates
 
 " Fuzzy finder
 Plugin 'airblade/vim-rooter'
-" Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 " Semantic language support
-Plugin 'phildawes/racer'
-Plugin 'racer-rust/vim-racer'
-Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
+" Plugin 'phildawes/racer'
+" Plugin 'racer-rust/vim-racer'
+"Plugin 'ncm2/ncm2'
+" Plugin 'roxma/nvim-yarp'
 Plugin 'sheerun/vim-polyglot'			" Sensible defaults for language packs
 Plugin 'vim-jp/vim-cpp'					" Extended C(pp) recognition 
-" Plugin 'ludovicchabant/vim-gutentags'   " Generate and update local ctags
 Plugin 'vim-scripts/TagHighlight'		" Recognise ctags
 Plugin 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -54,20 +50,20 @@ Plugin 'autozimu/LanguageClient-neovim', {
 " Language server
 
 " Completion Plugin
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-tmux'
-Plugin 'ncm2/ncm2-path'
+" Plugin 'ncm2/ncm2-bufword'
+" Plugin 'ncm2/ncm2-tmux'
+" Plugin 'ncm2/ncm2-path'
+
 
 " Syntactic language support
 Plugin 'cespare/vim-toml'
 Plugin 'rust-lang/rust.vim'
 Plugin 'dag/vim-fish'
 Plugin 'godlygeek/tabular'
-Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'OmniSharp/omnisharp-vim'		" Microsoft's Java support
+Plugin 'plasticboy/vim-markdown'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Aesthetics
-Plugin 'lifepillar/vim-solarized8'		" FOTM
 Plugin 'junegunn/goyo.vim'				" Distraction free
 " Plugin 'blinklad/vim-rand-colour' " Random colour schemes
 
@@ -193,6 +189,26 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-l> <Plug>(ale_detail)
 nmap <silent> <C-g> :close<cr>
 
+" 'Smart' nevigation
+nmap <silent> E <Plugin>(coc-diagnostic-prev)
+nmap <silent> W <Plugin>(coc-diagnostic-next)
+nmap <silent> gd <Plugin>(coc-definition)
+nmap <silent> gy <Plugin>(coc-type-definition)
+nmap <silent> gi <Plugin>(coc-implementation)
+nmap <silent> gr <Plugin>(coc-references)
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" nmap <silent> F <Plug>(ale_lint)
+" nmap <silent> <C-l> <Plug>(ale_detail)
+" nmap <silent> <C-g> :close<cr>
 " Language client stuff
 " let g:LanguageClient_serverCommands = {
 "   \ 'cpp': ['clangd'],
@@ -243,8 +259,8 @@ let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
 
-let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
+" let g:racer_cmd = "~/.cargo/bin/racer"
+" let g:racer_experimental_completer = 1
 
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
@@ -255,12 +271,28 @@ let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/
 
 
 " Completion
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-" tab to select
-" and don't hijack my enter key
-inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
-inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-.> to trigger completion.
+inoremap <silent><expr> <c-.> coc#refresh()
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " =============================================================================
 " Go
@@ -494,7 +526,7 @@ endif
 "
 
 " Auto-make less files on save
-autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
+" autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
 " Follow Rust code style rules
 au Filetype rust set colorcolumn=100
@@ -522,7 +554,7 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 "
 " C brace folding, disable multi-line comment folding
 let c_no_comment_fold = 1
-set foldmethod=syntax
+set foldmethod=indent
 set foldtext=MyFoldText()
 
 function MyFoldText()
