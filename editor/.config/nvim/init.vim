@@ -190,12 +190,12 @@ nmap <silent> <C-l> <Plug>(ale_detail)
 nmap <silent> <C-g> :close<cr>
 
 " 'Smart' nevigation
-nmap <silent> E <Plugin>(coc-diagnostic-prev)
-nmap <silent> W <Plugin>(coc-diagnostic-next)
-nmap <silent> gd <Plugin>(coc-definition)
-nmap <silent> gy <Plugin>(coc-type-definition)
-nmap <silent> gi <Plugin>(coc-implementation)
-nmap <silent> gr <Plugin>(coc-references)
+nmap <silent> E <Plug>(coc-diagnostic-prev)
+nmap <silent> W <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -219,7 +219,7 @@ endfunction
 " Automatically start language servers.
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['/usr/bin/rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/usr/local/bin/pyls'],
