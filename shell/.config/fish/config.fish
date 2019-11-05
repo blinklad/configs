@@ -4,7 +4,7 @@
 abbr -a e nvim
 abbr -a pac 'sudo pacman -Syu'
 abbr -a c cargo
-abbr -a cr 'cargo run'
+abbr -a r 'cargo run'
 abbr -a ct 'cargo test'
 abbr -a m make
 abbr -a mu 'ncmpcpp'

@@ -294,6 +294,19 @@ inoremap <silent><expr> <c-.> coc#refresh()
 " Or use `complete_info` if your vim support it, like:
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
+function! ToggleDiagnostics()
+  if g:DiagnosticsHidden
+    LanguageClientStart
+    let g:DiagnosticsHidden = 0
+  else
+    LanguageClientStop
+    let g:DiagnosticsHidden = 1
+  endif
+endfunction
+
+let g:DiagnosticsHidden = 0
+
+nnoremap <Leader>h :call ToggleDiagnostics()<cr>
 " =============================================================================
 " Go
 " =============================================================================
