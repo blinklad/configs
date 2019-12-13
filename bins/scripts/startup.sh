@@ -1,5 +1,5 @@
 #!/bin/bash
-BACKGROUND="~/.config/configs/bins/backgrounds/current.png"
+BACKGROUND=~/.config/configs/bins/backgrounds/current.png
 
 compton &
 nm-applet &
