@@ -30,7 +30,6 @@ Plugin 'w0rp/ale'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'andymass/vim-matchup'
 Plugin 'chriskempson/base16-vim' " Color scheme templates
-
 " Fuzzy finder
 Plugin 'airblade/vim-rooter'
 Plugin 'junegunn/fzf.vim'
@@ -91,8 +90,31 @@ endif
 
 set background=dark
 set termguicolors 
-colorscheme base16-atelier-lakeside
-" let base16colorspace=256
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+let g:lightline = {
+\   'colorscheme': 'base16_railscasts'
+\ }
+
+fun! s:setLightlineColorscheme(name)
+    let g:lightline.colorscheme = a:name
+    call lightline#init()
+    call lightline#colorscheme()
+    call lightline#update()
+endfun
+
+fun! s:lightlineColorschemes(...)
+    return join(map(
+                \ globpath(&rtp,"autoload/lightline/colorscheme/*.vim",1,1),
+                \ "fnamemodify(v:val,':t:r')"),
+                \ "\n")
+endfun
+
+com! -nargs=1 -complete=custom,s:lightlineColorschemes LightlineColorscheme
+            \ call s:setLightlineColorscheme(<q-args>)
 
 " random colour themes
 " let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors'
@@ -126,12 +148,7 @@ let g:secure_modelines_allowed_items = [
 let g:goyo_height=100
 
 " Lightline
-let g:lightline = {
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
-\ }
-let g:lightline.colorscheme = 'one'
+
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
@@ -643,4 +660,3 @@ autocmd FileType markdown map <leader>c I<++><CR>%1.<CR>---<CR><ESC>/*<++>*<CR>c
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
-

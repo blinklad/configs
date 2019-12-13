@@ -20,8 +20,7 @@
 background = #161b21
 background-alt = #182c3d
 foreground = #5a7b8c
-foreground-alt = 
-#7195a8
+foreground-alt = #7195a8
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -30,9 +29,14 @@ alert = #bd2c40
 monitor_laptop_1= ${env:MONITOR:eDP-1}
 monitor_desktop_1= ${env:MONITOR:HDMI-1}
 monitor_desktop_2= ${env:MONITOR:HDMI-1}
+
+border-color = #00000
+border-left-size = 40
+;border-bottom-size = 20
+
 width = 100%
 height = 2.5%
-radius = 6.0
+radius = {2.0, 2.0} 
 fixed-center = false
 bottom = true
 
@@ -42,6 +46,8 @@ foreground = ${colors.foreground}
 border-size = 0
 line-size = 2
 padding = 1
+offset-x = 60%
+; padding-left = 100
 module-margin = 1
 
 ; font-0 = fixed:pixelsize=10;1
@@ -69,7 +75,7 @@ tray-maxsize = 24
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 

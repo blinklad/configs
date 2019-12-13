@@ -13,7 +13,7 @@ set_from_resource $border		   color4
 set_from_resource $cborder color0		   #353325
 
 # Set the window style |border|bckgrnd|text|indicator|child border
-client.focused			$cborder		$bg		$cs    $cs	  $border
+client.focused			$cborder		$bg		$color0    $cs	 #173066
 client.unfocused		$ac		$cs		$bg    $bg	  $cborder
 client.focused_inactive $ac		$bg		$bg    $bg 	  $cborder
 
@@ -130,7 +130,7 @@ bindsym $mod+Shift+c exec firefox
 bindsym $mod+Shift+m exec firefox --new-window https://mylo.utas.edu.au/d2l/home
 
 ## open vim 
-bindsym $mod+Shift+v exec termite -e nvim
+bindsym $mod+Shift+v exec alacritty -e nvim
 
 # start dmenu 
 bindsym $mod+d exec dmenu_run -b -i -l 10 -nb \#1c2e4d
@@ -175,52 +175,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-
-# Workspace saving
-mode "save" {
-  bindsym 1 exec "python /usr/bin/i3-resurrect save -w web"
-  bindsym 2 exec "python /usr/bin/i3-resurrect save -w nvim"
-  bindsym 3 exec "python /usr/bin/i3-resurrect save -w util"
-  bindsym 4 exec "python /usr/bin/i3-resurrect save -w misc"
-  bindsym 5 exec "python /usr/bin/i3-resurrect save -w a"
-  bindsym 6 exec "python /usr/bin/i3-resurrect save -w b"
-  bindsym 7 exec "python /usr/bin/i3-resurrect save -w c"
-  bindsym 8 exec "python /usr/bin/i3-resurrect save -w d"
-  bindsym 9 exec "python /usr/bin/i3-resurrect save -w e"
-  bindsym 0 exec "python /usr/bin/i3-resurrect save -w f"
-
-
-
-  # Back to normal: Enter, Escape, or s
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym s mode "default"
-  bindsym $mod+s mode "default"
-}
-
-bindsym $mod+s mode "save"
-
-# Workspace restoring
-mode "restore" {
-  bindsym 1 exec "python /usr/bin/i3-resurrect restore -w web"
-  bindsym 2 exec "python /usr/bin/i3-resurrect restore -w nvim"
-  bindsym 3 exec "python /usr/bin/i3-resurrect restore -w util"
-  bindsym 4 exec "python /usr/bin/i3-resurrect restore -w misc"
-  bindsym 5 exec "python /usr/bin/i3-resurrect restore -w a"
-  bindsym 6 exec "python /usr/bin/i3-resurrect restore -w b"
-  bindsym 7 exec "python /usr/bin/i3-resurrect restore -w c"
-  bindsym 8 exec "python /usr/bin/i3-resurrect restore -w d"
-  bindsym 9 exec "python /usr/bin/i3-resurrect restore -w e"
-  bindsym 0 exec "python /usr/bin/i3-resurrect restore -w f"
-
-  # Back to normal: Enter, Escape, or n
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym n mode "default"
-  bindsym $mod+n mode "default"
-}
-
-bindsym $mod+n mode "restore"
 # =============================================================================
 # i3-gaps stuff 
 # =============================================================================
@@ -235,55 +189,21 @@ smart_gaps on
 smart_borders on
 
 # set gaps manually 
-gaps inner 8
-gaps outer 8 
+gaps inner 10 
+gaps outer 15 
 
 # =============================================================================
 # Startup scripts 
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id ~/.scripts/launch.sh
-
-# compton
+exec_always --no-startup-id ~/.config/configs/bins/scripts/launch.sh
 exec_always --no-startup-id compton
-
-# network tray 
-exec_always --no-startup-id nm-applet
-
-# wifi 
-exec ~/.scripts/startupscript.sh
-
-# background
-exec feh --bg-fill ~/documents/pictures/backgrounds/11110f.png
-
-# mpd
-exec fish -c mpd-listen
-
-# Set the colour scheme with Pywal
-#exec wal -R
+# hide mouse
+exec_always --no-startup-id unclutter -idle 1 -root
+exec ~/.config/configs/bins/scripts/startup.sh
 
 # =============================================================================
 # Quality of life
 # =============================================================================
-
-# Do not follow the mouse
 focus_follows_mouse yes
-
-# =============================================================================
-# Set the workspaces 
-# =============================================================================
-
-exec fish -c restore_layouts
-
-# hide mouse
-exec_always --no-startup-id unclutter -idle 1 -root
-
-# term splits ft. osrs, gotop and blank term
-#exec python /usr/bin/i3-resurrect restore -w misc
-
-# hide_edge_borders both
-# default_border none
-# default_border pixel
-# default_floating_border none
-# default_floating_border pixel 0

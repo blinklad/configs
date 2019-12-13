@@ -177,6 +177,7 @@ end
 # 'Environment' variables
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x TERMINAL alacritty
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
@@ -205,7 +206,7 @@ setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 # https://github.com/fish-shell/fish-shell/issues/2456
 setenv LD_LIBRARY_PATH (rustc +nightly --print sysroot)"/lib:$LD_LIBRARY_PATH"
 setenv RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
-
+setenv GOPATH ~/.go
 setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
 setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS "--height 25% --preview 'bat --style=numbers --color=always {}'"
