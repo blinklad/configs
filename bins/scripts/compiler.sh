@@ -5,7 +5,8 @@ base="${file%.*}"
 file=$(readlink -f "$1")
 dir=($dirname "$file")
 
-# https://github.com/LukeSmithxyz/voidrice
+cd "$dir" || exit
+# thanks https://github.com/LukeSmithxyz/voidrice/
 textype() { \
 	command="pdflatex"
 	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"

@@ -177,6 +177,7 @@ end
 # 'Environment' variables
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x BROWSER firefox
 set -x TERMINAL alacritty
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
