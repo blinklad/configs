@@ -1,11 +1,20 @@
 #! /bin/sh
-# Generic compiler script. WIP. 
+# Generic compiler script.
 
+base="${file%.*}"
 file=$(readlink -f "$1")
 dir=($dirname "$file")
 
-# Regex checks file extension and executes commands
+# https://github.com/LukeSmithxyz/voidrice
+textype() { \
+	command="pdflatex"
+	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
+	$command --output-directory="$dir" "$base" &&
+	$command --output-directory="$dir" "$base"
+	}
+
 case "$file" in 
-		*\.tex) pdflatex -interaction nonstopmode -output-directory $dir -no-file-line-error "$file" ;;
+        *\.c) cc "$file" -o "$base" && "$base" ;;
+		*\.tex) textype "$file" ;;
 		*\.java) javac "$file" ;;
 esac
