@@ -5,7 +5,7 @@
 # thanks https://github.com/LukeSmithxyz/voidrice/
 xclip -h >/dev/null || exit
 
-chosen=$(grep -v "#" ~/.config/configs/bins/raw_text/emoji | dmenu -i -l 20 -fn Monospace-18)
+chosen=$(grep -v "#" ~/.config/configs/bins/raw_text/emoji | dmenu -i -b -l 10 -nb \#1c2e4d -fn Monospace-16)
 
 [ "$chosen" != "" ] || exit
 

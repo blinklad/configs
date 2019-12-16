@@ -1,0 +1,25 @@
+#! /bin/env sh
+# Toggles battery-expensive hardware devices through dmenu prompts.
+
+asktoggle() { \
+	case $(printf "On\\nOff" | dmenu -i -l 10 -nb \#1c2e4d -p "Toggle on or off?") in
+		On) on ;;
+		Off) off ;;
+	esac
+	}
+
+on() { \
+	case $(printf "xboxdrv\\nmopidy\\nunimplemented" | dmenu -i -l 10 -nb \#1c2e4d -p "Which device?") in
+		xboxdrv) sudo systemctl stop xboxdrv.service ;;
+		mopidy) mopidy & ;;
+		unimplemented) notify-send 'unimplemented' ;;
+	esac
+	}
+
+off() { \
+	case $(printf "xboxdrv\\nmopidy\\nunimplemented" | dmenu -i -l 10 -nb \#1c2e4d -p "Which device?") in
+		xboxdrv) sudo systemctl start xboxdrv.service ;;
+		mopidy) killall mopidy ;;
+		unimplemented) notify-send 'unimplemented' ;;
+	esac
+	}
