@@ -179,13 +179,14 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 set -x BROWSER firefox
 set -x TERMINAL alacritty
-set -x SUDO_ASKPASS dmenupass
+set -x SUDO_ASKPASS ~/.local/bin/dmenupass
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
 set -x BACKGROUNDS /home/blinklad/documents/pictures/backgrounds/
 set -x PICTURES /home/blinklad/documents/pictures/
 set -x SCRIPTS /home/blinklad/.scripts/
+set -x SCREENSHOTS $PICTURES/screenshot
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'

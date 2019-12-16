@@ -155,7 +155,7 @@ bindsym $mod+Print exec ~/.local/bin/screenshot
 
 # mount
 bindsym $mod+Shift+Insert exec ~/.local/bin/dmenumount
-bindsym $mod+Shift+Delete exec ~/.local/bin/menuumount
+bindsym $mod+Shift+Delete exec ~/.local/bin/dmenuumount
 
 # =============================================================================
 # Workspaces 
