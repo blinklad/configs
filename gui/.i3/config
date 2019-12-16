@@ -147,15 +147,15 @@ bindsym $mod+Shift+o exec runelite
 # bindsym $mod+0
 
 # brightness
-# bindsym $mod+TODO xbacklight -inc 10
-# bindsym $mod+Shift+TODO xbacklight -dec 10
+bindsym $mod+F11 exec light -A 10
+bindsym $mod+F12 exec light -U 10
 
 # screenshot
 bindsym $mod+Print exec maim
 
 # mount
-bindsym $mod+Shift+Insert dmenumount
-bindsym $mod+Shift+Delete dmenuumount
+bindsym $mod+Shift+Insert exec dmenumount
+bindsym $mod+Shift+Delete exec menuumount
 
 # =============================================================================
 # Workspaces 
