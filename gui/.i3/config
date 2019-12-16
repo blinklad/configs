@@ -83,6 +83,9 @@ bindsym $mod+Shift+n reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# prompt shutdown
+bindsym $mod+Shift+s prompt_shutdown
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -126,9 +129,6 @@ bindsym $mod+Shift+Return exec alacritty
 # start firefox
 bindsym $mod+Shift+c exec firefox
 
-# open MyLO
-bindsym $mod+Shift+m exec firefox --new-window https://mylo.utas.edu.au/d2l/home
-
 # open vim 
 bindsym $mod+Shift+v exec alacritty -e nvim
 
@@ -142,9 +142,9 @@ bindsym $mod+Shift+s exec steam
 bindsym $mod+Shift+o exec runelite
 
 # volume
-# bindsym $mod+equal 
-# bindsym $mod+minus
-# bindsym $mod+0
+bindsym $mod+equal audiotoggle inc
+bindsym $mod+minus audiotoggle dec
+bindsym $mod+0 audiotoggle toggle
 
 # brightness
 bindsym $mod+F11 exec light -A 10
@@ -214,12 +214,12 @@ gaps outer 15
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id ~/.config/configs/bins/scripts/launch
+exec_always --no-startup-id launch
 exec_always --no-startup-id compton
 
 # hide mouse
 exec_always --no-startup-id unclutter -idle 1 -root
-exec ~/.config/configs/bins/scripts/startup
+exec startup
 
 # =============================================================================
 # Quality of life
