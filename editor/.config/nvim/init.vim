@@ -537,7 +537,7 @@ inoremap <leader><leader> <c-^>
 " =============================================================================
 
 " Clear up tex junk
-autocmd VimLeave *.tex !~/.config/configs/bins/scripts/texclear.sh %
+autocmd VimLeave *.tex !~/.config/configs/bins/scripts/texclear %
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -571,7 +571,7 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/.notepage', 'custom_wiki2html': '~/scripts/wiki2html.sh', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/.notepage', 'custom_wiki2html': '~/scripts/wiki2html', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd FileType html inoremap ;i <em></em><Space><++><Esc>FeT>i
 

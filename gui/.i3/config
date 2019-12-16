@@ -83,15 +83,6 @@ bindsym $mod+Shift+n reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# vidya
-bindsym $mod+Shift+s exec steam
-
-# not vidya
-bindsym $mod+Shift+o exec runelite
-
-# volume
-# TODO
-
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -138,11 +129,34 @@ bindsym $mod+Shift+c exec firefox
 # open MyLO
 bindsym $mod+Shift+m exec firefox --new-window https://mylo.utas.edu.au/d2l/home
 
-## open vim 
+# open vim 
 bindsym $mod+Shift+v exec alacritty -e nvim
 
 # start dmenu 
 bindsym $mod+d exec dmenu_run -b -i -l 10 -nb \#1c2e4d
+
+# vidya
+bindsym $mod+Shift+s exec steam
+
+# not vidya
+bindsym $mod+Shift+o exec runelite
+
+# volume
+# bindsym $mod+equal 
+# bindsym $mod+minus
+# bindsym $mod+0
+
+# brightness
+# bindsym $mod+TODO xbacklight -inc 10
+# bindsym $mod+Shift+TODO xbacklight -dec 10
+
+# screenshot
+bindsym $mod+Print exec maim
+
+# mount
+bindsym $mod+Shift+Insert dmenumount
+bindsym $mod+Shift+Delete dmenuumount
+
 # =============================================================================
 # Workspaces 
 # =============================================================================
@@ -157,8 +171,6 @@ set $ws5 "a"
 set $ws6 "b"
 set $ws7 "c"
 set $ws8 "d"
-set $ws9 "e"
-set $ws10 "f"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -169,8 +181,6 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -181,8 +191,6 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
 # =============================================================================
 # i3-gaps stuff 
@@ -206,11 +214,12 @@ gaps outer 15
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id ~/.config/configs/bins/scripts/launch.sh
+exec_always --no-startup-id ~/.config/configs/bins/scripts/launch
 exec_always --no-startup-id compton
+
 # hide mouse
 exec_always --no-startup-id unclutter -idle 1 -root
-exec ~/.config/configs/bins/scripts/startup.sh
+exec ~/.config/configs/bins/scripts/startup
 
 # =============================================================================
 # Quality of life

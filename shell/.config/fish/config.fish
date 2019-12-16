@@ -179,6 +179,7 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 set -x BROWSER firefox
 set -x TERMINAL alacritty
+set -x SUDO_ASKPASS dmenupass
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
