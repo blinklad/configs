@@ -142,20 +142,20 @@ bindsym $mod+s exec steam
 bindsym $mod+o exec runelite
 
 # volume
-bindsym $mod+equal audiotoggle inc
-bindsym $mod+minus audiotoggle dec
-bindsym $mod+0 audiotoggle toggle
+bindsym $mod+equal exec ~/.local/bin/audiotoggle inc
+bindsym $mod+minus exec ~/.local/bin/audiotoggle dec
+bindsym $mod+0 exec ~/.local/bin/audiotoggle toggle
 
 # brightness
 bindsym $mod+F11 exec light -A 10
 bindsym $mod+F12 exec light -U 10
 
 # screenshot
-bindsym $mod+Print exec screenshot
+bindsym $mod+Print exec ~/.local/bin/screenshot
 
 # mount
-bindsym $mod+Shift+Insert exec dmenumount
-bindsym $mod+Shift+Delete exec menuumount
+bindsym $mod+Shift+Insert exec ~/.local/bin/dmenumount
+bindsym $mod+Shift+Delete exec ~/.local/bin/menuumount
 
 # =============================================================================
 # Workspaces 
@@ -214,12 +214,12 @@ gaps outer 15
 # =============================================================================
 
 # polybar 
-exec_always --no-startup-id launch
+exec_always --no-startup-id ~/.local/bin/launch
 exec_always --no-startup-id compton
 
 # hide mouse
 exec_always --no-startup-id unclutter -idle 1 -root
-exec startup
+exec ~/.local/bin/startup
 
 # =============================================================================
 # Quality of life
