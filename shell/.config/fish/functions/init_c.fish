@@ -1,4 +1,5 @@
 function init_c --description 'Makes an empty c directory, including a makefile and blank README, and then initialises a git repo.'
+	set TEMPLATE_PATH "/home/blinklad/.config/configs/bins/templates/c-template/"
 	# Sanity check
 	if test (count $argv > /dev/null -eq 0); \
 	or test (count $argv > /dev/null -gt 1)
@@ -7,9 +8,9 @@ function init_c --description 'Makes an empty c directory, including a makefile 
 		exit
 	end
 
-	# TODO. Hardcoded paths, make portable pls. 
-	set make_file_location "/home/blinklad/.config/configs/bins/Makefile"
-	set driver_file_location "/home/blinklad/.config/configs/bins/main.c"
+	# TODO Test library
+	set make_file_location "$TEMPLATE_PATH/Makefile"
+	set driver_file_location "$TEMPLATE_PATH/main.c"
 	set main_header "/** Driver file for $argv. */"
 	set spec_header "/** Specification for $argv. */"
 
