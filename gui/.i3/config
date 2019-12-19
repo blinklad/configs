@@ -164,7 +164,7 @@ bindsym $mod+Shift+Delete exec ~/.local/bin/dmenuumount
 # Define names for default workspaces.  
 # Used to provide extended window manager hints (EWMH), too.
 set $ws1 "web"
-set $ws2 "nvim"
+set $ws2 "term"
 set $ws3 "util"
 set $ws4 "misc"
 set $ws5 "a"
@@ -209,6 +209,13 @@ smart_borders on
 gaps inner 10 
 gaps outer 15 
 
+# =============================================================================
+# Window rules
+# =============================================================================
+for_window [class="Firefox"] move workspace $ws1
+for_window [class="Firefox"] move workspace $ws2
+for_window [class="net-runelite-client-RuneLite"] move workspace $ws3
+for_window [class="Steam"] move workspace $ws3
 # =============================================================================
 # Startup scripts 
 # =============================================================================

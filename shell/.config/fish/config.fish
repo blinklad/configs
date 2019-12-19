@@ -175,8 +175,8 @@ function d
 end
 
 # 'Environment' variables
-set -x EDITOR nvim
-set -x VISUAL nvim
+set -x EDITOR vim
+set -x VISUAL vim
 set -x BROWSER firefox
 set -x TERMINAL alacritty
 set -x SUDO_ASKPASS ~/.local/bin/dmenupass
