@@ -32,10 +32,11 @@ abbr -a cf 'nvim ~/.config/configs/shell/.config/fish/config.fish'
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Directory																	  # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-abbr -a gc ~/.config/configs/
-abbr -a gu ~/Uni/
-abbr -a gw ~/.vimwiki
-abbr -a gd ~/dev/
+abbr -a gtc ~/.config/configs/
+abbr -a gtu ~/Uni/
+abbr -a gtw ~/.vimwiki
+abbr -a gtd ~/dev/
+abbr -a gts ~/.local/bin/
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Fzf																		  #
