@@ -2,7 +2,7 @@
 # General programs                                                            # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 abbr -a e nvim
-abbr -a pac 'sudo pacman -Syu'
+abbr -a pac 'sudo -A pacman -Syu'
 abbr -a c cargo
 abbr -a r 'cargo run'
 abbr -a ct 'cargo test'
@@ -181,6 +181,7 @@ set -x VISUAL vim
 set -x BROWSER firefox
 set -x TERMINAL alacritty
 set -x SUDO_ASKPASS ~/.local/bin/dmenupass
+set -x GIT_ASKPASS $SUDO_ASKPASS
 set -x DOTNET_ROOT /opt/dotnet
 set -x GTK2_RC_FILES ~/.gtkrc-2.0
 set -x PYTHON_LOCAL /home/blinklad/.local/lib/python3.7/site-packages/
