@@ -214,7 +214,6 @@ gaps outer 15
 # =============================================================================
 for_window [class="Firefox"] move workspace $ws1
 for_window [class="Firefox"] move workspace $ws2
-for_window [class="net-runelite-client-RuneLite"] move workspace $ws3
 for_window [class="Steam"] move workspace $ws3
 # =============================================================================
 # Startup scripts 
